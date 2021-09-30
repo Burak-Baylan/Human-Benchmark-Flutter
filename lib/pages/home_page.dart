@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/pages/reaction_time/reaction_time_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/sequence_memory_page.dart';
@@ -111,7 +112,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () => _sendToPage(route),
+      onPressed: () => Get.to(route),
       child: Center(
         child: AutoSizeText(
           text,
@@ -124,7 +125,4 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _sendToPage(Widget route) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => route));
-  }
 }

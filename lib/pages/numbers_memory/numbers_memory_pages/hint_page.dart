@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
+import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
 import 'package:human_benchmark/pages/numbers_memory/numbers_memory_pages/show_number_page.dart';
 
 class HintPage extends StatelessWidget {
@@ -70,8 +72,8 @@ class HintPage extends StatelessWidget {
       ),
       child: Text("Start"),
       onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ShowNumber()));
+        NumbersMemoryController c = Get.find();
+        c.select_show_number_page();
       },
     );
   }
