@@ -1,21 +1,22 @@
 import 'dart:math';
+import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+class ValueController extends NumbersMemoryController{
 
-class ValueController extends GetxController{
+  var levelCounter = 1;
+  String number = "";
 
-  var levelCounter = 5;
-  String number = "0";
+  int get levelSecond => (levelCounter + 1) * 1000;
 
   incrementLevel() => levelCounter++;
 
-  numberGenerator(){
+  String numberGenerator(){
     number = "";
     var random = Random();
-    for (var i = 0; i>=levelCounter; i++){
+    for (var i = 0; i<levelCounter; i++){
       number += random.nextInt(10).toString();
     }
+    return number;
   }  
 
 }

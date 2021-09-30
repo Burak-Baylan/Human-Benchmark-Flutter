@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
-import 'package:human_benchmark/pages/numbers_memory/numbers_memory_pages/show_number_page.dart';
 
 class HintPage extends StatelessWidget {
   HintPage({Key? key}) : super(key: key);
@@ -71,10 +70,8 @@ class HintPage extends StatelessWidget {
         primary: Color.fromRGBO(244, 180, 0, 1),
       ),
       child: Text("Start"),
-      onPressed: () {
-        NumbersMemoryController c = Get.find();
-        c.select_show_number_page();
-      },
+      onPressed: () =>
+          Get.find<NumbersMemoryController>().select_show_number_page(),
     );
   }
 

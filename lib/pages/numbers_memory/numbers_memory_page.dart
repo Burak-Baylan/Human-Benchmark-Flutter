@@ -17,6 +17,7 @@ class _NumbersMemoryState extends State<NumbersMemory> {
   void initState() {
     SystemChrome.setEnabledSystemUIOverlays([]);
     controller = Get.put(NumbersMemoryController());
+    valueController = Get.put(ValueController());
     super.initState();
   }
 
@@ -28,6 +29,7 @@ class _NumbersMemoryState extends State<NumbersMemory> {
   }
 
   late NumbersMemoryController controller;
+  late ValueController valueController;
 
   @override
   Widget build(BuildContext context) {
