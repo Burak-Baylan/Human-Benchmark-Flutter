@@ -7,21 +7,35 @@ import 'package:human_benchmark/pages/numbers_memory/controllers/value_controlle
 import 'package:human_benchmark/pages/numbers_memory/helpers/numbers_memory_timer.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class ShowNumber extends StatelessWidget {
+class ShowNumber extends StatefulWidget {
   ShowNumber({Key? key}) : super(key: key);
 
+  @override
+  _ShowNumberState createState() => _ShowNumberState();
+}
+
+class _ShowNumberState extends State<ShowNumber> {
   late NumbersMemoryController c;
+
   late BuildContext context;
+
+  static bool lock = true;
 
   initializeValues() {
     c = Get.find();
   }
 
   @override
+  void dispose() {
+    lock = true;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext buildContext) {
     context = buildContext;
     initializeValues();
-    countDown();
+    startLevel();
 
     return Scaffold(
       backgroundColor: MyColors.numbersMemoryBlue,
@@ -31,7 +45,7 @@ class ShowNumber extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              c.valueController.numberGenerator(),
+              c.valueController.number,
               style: TextStyle(
                 fontFamily: 'GemunuLibre',
                 color: Colors.white,
@@ -51,11 +65,15 @@ class ShowNumber extends StatelessWidget {
     );
   }
 
-  countDown() async {
-    await NumbersMemoryTimer.startTimer(
-      milliseconds: c.valueController.levelSecond,
-      onFinished: () => c.select_ask_number_page(),
-    );
+  startLevel() {
+    if (lock) {
+      lock = false;
+      c.valueController.numberGenerator();
+      NumbersMemoryTimer.startTimer(
+        milliseconds: c.valueController.levelSecond,
+        onFinished: () => c.selectAskNumberPage(),
+      );
+    }
   }
 
   Widget buildProgressBar() {

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/pages/reaction_time/reaction_time_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/sequence_memory_page.dart';
-
 import 'numbers_memory/numbers_memory_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -33,7 +32,7 @@ class HomePage extends StatelessWidget {
               //color: Colors.red,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: MyColors.homeLightGreen,
+                  primary: MyColors.menuPinkColor,
                   elevation: 0,
                   side: BorderSide(color: Colors.white, width: 2),
                   shape: RoundedRectangleBorder(
@@ -103,7 +102,7 @@ class HomePage extends StatelessWidget {
   }) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: MyColors.homeLightGreen,
+        primary: MyColors.menuPinkColor,
         side: BorderSide(color: Colors.white, width: 2),
         elevation: 0,
         shape: RoundedRectangleBorder(

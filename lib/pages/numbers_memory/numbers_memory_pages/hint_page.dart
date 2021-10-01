@@ -46,9 +46,9 @@ class HintPage extends StatelessWidget {
               fontSize: 35,
             ),
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 17),
           Text(
-            "The humans are remember average 7 numbers.\n",
+            "The humans are remember average 7 numbers.",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontFamily: 'GemunuLibre',
@@ -56,7 +56,7 @@ class HintPage extends StatelessWidget {
                 fontSize: 25),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 35),
+          SizedBox(height: 30),
           startButton(),
         ],
       ),

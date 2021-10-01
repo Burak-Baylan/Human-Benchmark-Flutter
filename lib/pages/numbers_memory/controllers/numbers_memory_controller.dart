@@ -8,8 +8,6 @@ import 'package:human_benchmark/pages/numbers_memory/numbers_memory_pages/wrong_
 import '../numbers_memory_pages/ask_number_page.dart';
 
 class NumbersMemoryController extends GetxController {
-  
-  NumbersMemoryController();
 
   ValueController get valueController => Get.find<ValueController>();
 
@@ -23,15 +21,15 @@ class NumbersMemoryController extends GetxController {
     WrongAnswer(),
   ];
 
-  void select_select_hint_page() => page.value = 0;
+  void selectHintPage() => page.value = 0;
 
-  void select_show_number_page() => page.value = 1;
+  void selectShowNumberPage() => page.value = 1;
 
-  void select_ask_number_page() => page.value = 2;
+  void selectAskNumberPage() => page.value = 2;
 
-  void select_correct_answer_page() => page.value = 3;
+  void selectCorrectAnswerPage() => page.value = 3;
 
-  void select_wrong_answer_page() => page.value = 4;
+  void selectWrongAnswerPage() => page.value = 4;
 
   reset(){
     page.value = 0;
