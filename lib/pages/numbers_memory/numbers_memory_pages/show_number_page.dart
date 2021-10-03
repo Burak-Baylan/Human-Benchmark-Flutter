@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
@@ -19,15 +20,19 @@ class _ShowNumberState extends State<ShowNumber> {
 
   late BuildContext context;
 
-  static bool lock = true;
-
   initializeValues() {
     c = Get.find();
   }
 
   @override
+  void initState() {
+    super.initState();
+    //SystemChrome.setEnabledSystemUIOverlays([]);
+  }
+
+  @override
   void dispose() {
-    lock = true;
+    //SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     super.dispose();
   }
 
@@ -66,14 +71,11 @@ class _ShowNumberState extends State<ShowNumber> {
   }
 
   startLevel() {
-    if (lock) {
-      lock = false;
-      c.valueController.numberGenerator();
-      NumbersMemoryTimer.startTimer(
-        milliseconds: c.valueController.levelSecond,
-        onFinished: () => c.selectAskNumberPage(),
-      );
-    }
+    c.valueController.numberGenerator();
+    NumbersMemoryTimer.startTimer(
+      milliseconds: c.valueController.levelSecond,
+      onFinished: () => c.selectAskNumberPage(),
+    );
   }
 
   Widget buildProgressBar() {

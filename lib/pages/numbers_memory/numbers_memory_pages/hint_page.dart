@@ -71,7 +71,7 @@ class HintPage extends StatelessWidget {
       ),
       child: Text("Start"),
       onPressed: () =>
-          Get.find<NumbersMemoryController>().select_show_number_page(),
+          Get.find<NumbersMemoryController>().selectShowNumberPage(),
     );
   }
 

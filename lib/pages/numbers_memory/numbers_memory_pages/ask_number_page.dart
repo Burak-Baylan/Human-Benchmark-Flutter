@@ -65,6 +65,7 @@ class _AskNumberState extends State<AskNumber> {
       width: Phone.width(context) / 1.3,
       //padding: EdgeInsets.symmetric(vertical: 15),
       child: TextField(
+        autofocus: true,
         focusNode: textFieldFocusNode,
         controller: textController,
         keyboardType: TextInputType.number,
@@ -88,7 +89,7 @@ class _AskNumberState extends State<AskNumber> {
         fixedSize: Size(Phone.width(context) / 3, 40),
         primary: Color.fromRGBO(244, 180, 0, 1),
       ),
-      onPressed: () => submitCheck(),
+      onPressed: () => submit(),
       child: Text(
         'Submit',
         textAlign: TextAlign.center,
@@ -96,16 +97,9 @@ class _AskNumberState extends State<AskNumber> {
     );
   }
 
-  submitCheck() {
-    if (MediaQuery.of(context).viewInsets.bottom == 0) {
-      valueController.usersAnswer = textController.text;
-      valueController.checkAnswer(controller);
-      textController.clear();
-    } else {
-      FocusScope.of(context).unfocus();
-      valueController.usersAnswer = textController.text;
-      valueController.checkAnswer(controller);
-      textController.clear();
-    }
+  submit() {
+    valueController.usersAnswer = textController.text;
+    valueController.checkAnswer(controller);
+    textController.clear();
   }
 }
