@@ -20,7 +20,6 @@ class _AskNumberState extends State<AskNumber> {
   late ValueController valueController;
 
   bool isKeyboardOpen = false;
-
   @override
   Widget build(BuildContext buildContext) {
     context = buildContext;
@@ -61,6 +60,7 @@ class _AskNumberState extends State<AskNumber> {
   FocusNode textFieldFocusNode = FocusNode();
 
   Widget _textField() {
+    //controller.protectedFocusLost = true;
     return Container(
       width: Phone.width(context) / 1.3,
       //padding: EdgeInsets.symmetric(vertical: 15),

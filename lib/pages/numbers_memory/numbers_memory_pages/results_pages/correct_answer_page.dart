@@ -5,8 +5,6 @@ import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
 import 'package:human_benchmark/pages/numbers_memory/numbers_memory_pages/results_pages/widgets/less_futured_text.dart';
 
-import 'helpers/wrong_numbers_detecetor.dart';
-
 class CorrectAnswer extends StatelessWidget {
   CorrectAnswer({Key? key}) : super(key: key);
 
@@ -29,7 +27,7 @@ class CorrectAnswer extends StatelessWidget {
               color: Colors.grey.shade400,
             ),
             SizedBox(height: 10),
-            text(
+            LessText.lessFuturedText(
               text: c.valueController.number,
               color: Colors.white,
               fontFamily: null,
@@ -77,24 +75,6 @@ class CorrectAnswer extends StatelessWidget {
         'Next',
         textAlign: TextAlign.center,
       ),
-    );
-  }
-
-  Widget text({
-    required String text,
-    Color color = Colors.grey,
-    double fontSize = 20,
-    String? fontFamily = 'GemunuLibre',
-  }) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontFamily: fontFamily,
-        color: color,
-        fontSize: fontSize,
-      ),
-      textAlign: TextAlign.center,
     );
   }
 }

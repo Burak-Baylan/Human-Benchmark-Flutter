@@ -22,17 +22,12 @@ class _ShowNumberState extends State<ShowNumber> {
 
   initializeValues() {
     c = Get.find();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    //SystemChrome.setEnabledSystemUIOverlays([]);
+    c.onShowNumberPage = true;
   }
 
   @override
   void dispose() {
-    //SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    c.onShowNumberPage = false;
     super.dispose();
   }
 
@@ -41,7 +36,6 @@ class _ShowNumberState extends State<ShowNumber> {
     context = buildContext;
     initializeValues();
     startLevel();
-
     return Scaffold(
       backgroundColor: MyColors.numbersMemoryBlue,
       body: Center(

@@ -13,6 +13,10 @@ class NumbersMemoryController extends GetxController {
 
   var page = 0.obs;
 
+  bool protectedFocusLost = false;
+
+  bool onShowNumberPage = false;
+
   List<Widget> pages = [
     HintPage(),
     ShowNumber(),
