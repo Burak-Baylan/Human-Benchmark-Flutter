@@ -14,7 +14,6 @@ class NumbersMemoryController extends GetxController {
   var page = 0.obs;
 
   bool protectedFocusLost = false;
-
   bool onShowNumberPage = false;
 
   List<Widget> pages = [
@@ -38,6 +37,8 @@ class NumbersMemoryController extends GetxController {
   reset(){
     page.value = 0;
     valueController.reset();
+    protectedFocusLost = false;
+    onShowNumberPage = false;
   }
 
 }

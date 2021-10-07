@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
+import 'package:human_benchmark/helpers/timer.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
-import 'package:human_benchmark/pages/numbers_memory/controllers/value_controller.dart';
-import 'package:human_benchmark/pages/numbers_memory/helpers/numbers_memory_timer.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class ShowNumber extends StatefulWidget {
@@ -66,7 +64,7 @@ class _ShowNumberState extends State<ShowNumber> {
 
   startLevel() {
     c.valueController.numberGenerator();
-    NumbersMemoryTimer.startTimer(
+    Timer.startTimer(
       milliseconds: c.valueController.levelSecond,
       onFinished: () => c.selectAskNumberPage(),
     );

@@ -60,10 +60,8 @@ class _AskNumberState extends State<AskNumber> {
   FocusNode textFieldFocusNode = FocusNode();
 
   Widget _textField() {
-    //controller.protectedFocusLost = true;
     return Container(
       width: Phone.width(context) / 1.3,
-      //padding: EdgeInsets.symmetric(vertical: 15),
       child: TextField(
         autofocus: true,
         focusNode: textFieldFocusNode,
@@ -74,8 +72,9 @@ class _AskNumberState extends State<AskNumber> {
         cursorColor: Colors.white,
         decoration: InputDecoration(
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(7),
-              borderSide: BorderSide.none),
+            borderRadius: BorderRadius.circular(7),
+            borderSide: BorderSide.none,
+          ),
           filled: true,
           fillColor: MyColors.numbersMemorySemiDarkBlue,
         ),

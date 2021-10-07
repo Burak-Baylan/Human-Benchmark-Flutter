@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext buildContext) {
     context = buildContext;
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 225, 175, 1),
+      backgroundColor: MyColors.menuBackgroundColor,
       extendBodyBehindAppBar: false,
       appBar: _appBar(),
       body: SafeArea(
@@ -23,16 +23,14 @@ class HomePage extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                //color: Colors.green,
                 child: _gamesLyt(),
               ),
             ),
             Container(
               margin: EdgeInsets.only(left: 15),
-              //color: Colors.red,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: MyColors.menuPinkColor,
+                  primary: MyColors.menuButtonColor,
                   elevation: 0,
                   side: BorderSide(color: Colors.white, width: 2),
                   shape: RoundedRectangleBorder(
@@ -56,11 +54,10 @@ class HomePage extends StatelessWidget {
       centerTitle: true,
       title: Text(
         "Home",
-        style: TextStyle(color: Color.fromRGBO(213, 126, 126, 1)),
+        style: TextStyle(color: Colors.white),
       ),
-      backgroundColor: Color.fromRGBO(255, 225, 175, 1), //Colors.white, //
+      backgroundColor: MyColors.menuBackgroundColor,
       elevation: 0,
-      //shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(15))),
     );
   }
 
@@ -102,7 +99,7 @@ class HomePage extends StatelessWidget {
   }) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: MyColors.menuPinkColor,
+        primary: MyColors.menuButtonColor,
         side: BorderSide(color: Colors.white, width: 2),
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -123,5 +120,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
 }

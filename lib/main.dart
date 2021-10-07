@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
-        primaryColor: MyColors.menuPinkColor,
+        primaryColor: MyColors.menuButtonColor,
       ),
       debugShowCheckedModeBanner: false,
       home: HomePage(),
