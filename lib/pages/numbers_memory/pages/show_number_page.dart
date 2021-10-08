@@ -35,7 +35,7 @@ class _ShowNumberState extends State<ShowNumber> {
     initializeValues();
     startLevel();
     return Scaffold(
-      backgroundColor: MyColors.numbersMemoryBlue,
+      backgroundColor: MyColors.myBlue,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -16,7 +16,7 @@ class CorrectAnswer extends StatelessWidget {
     context = buildContext;
     c = Get.find();
     return Scaffold(
-      backgroundColor: MyColors.numbersMemoryBlue,
+      backgroundColor: MyColors.myBlue,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

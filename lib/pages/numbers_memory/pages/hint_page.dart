@@ -13,7 +13,7 @@ class HintPage extends StatelessWidget {
   Widget build(BuildContext buildContext) {
     context = buildContext;
     return Scaffold(
-      backgroundColor: MyColors.numbersMemoryBlue,
+      backgroundColor: MyColors.myBlue,
       body: SafeArea(
         child: Container(
           width: Phone.width(context),
@@ -50,10 +50,11 @@ class HintPage extends StatelessWidget {
           Text(
             "The humans are remember average 7 numbers.",
             style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'GemunuLibre',
-                color: Colors.white,
-                fontSize: 25),
+              fontWeight: FontWeight.bold,
+              fontFamily: 'GemunuLibre',
+              color: Colors.white,
+              fontSize: 25,
+            ),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 30),

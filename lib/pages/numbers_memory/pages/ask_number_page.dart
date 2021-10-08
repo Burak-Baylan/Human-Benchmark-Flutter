@@ -26,7 +26,7 @@ class _AskNumberState extends State<AskNumber> {
     controller = Get.find();
     valueController = controller.valueController;
     return Scaffold(
-      backgroundColor: MyColors.numbersMemoryBlue,
+      backgroundColor: MyColors.myBlue,
       body: Container(
         child: Center(
           child: Column(
