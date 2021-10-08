@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
-import 'package:human_benchmark/pages/numbers_memory/numbers_memory_pages/results_pages/widgets/less_futured_text.dart';
+import 'package:human_benchmark/pages/numbers_memory/pages/results_pages/widgets/less_futured_text.dart';
 
-class CorrectAnswer extends StatelessWidget {
-  CorrectAnswer({Key? key}) : super(key: key);
+import 'helpers/wrong_numbers_detecetor.dart';
+
+class WrongAnswer extends StatelessWidget {
+  WrongAnswer({ Key? key }) : super(key: key);
 
   late NumbersMemoryController c;
   late BuildContext context;
@@ -27,7 +29,7 @@ class CorrectAnswer extends StatelessWidget {
               color: Colors.grey.shade400,
             ),
             SizedBox(height: 10),
-            LessText.lessFuturedText(
+             LessText.lessFuturedText(
               text: c.valueController.number,
               color: Colors.white,
               fontFamily: null,
@@ -39,42 +41,38 @@ class CorrectAnswer extends StatelessWidget {
               color: Colors.grey.shade400,
             ),
             SizedBox(height: 10),
-            LessText.lessFuturedText(
-              text: c.valueController.usersAnswer,
-              color: Colors.white,
-              fontFamily: null,
-              fontSize: 14,
-            ),
+            WrongDetecetor().detect(context: context, controller: c),
             SizedBox(height: 30),
             LessText.lessFuturedText(
               text: 'Level ${c.valueController.levelCounter}',
-              color: Colors.green.shade400,
+              color: Colors.red.shade400,
               fontSize: 50,
             ),
             SizedBox(
               height: 20,
             ),
-            nextButton(),
+            retryButton(),
           ],
         ),
       ),
     );
   }
 
-  Widget nextButton() {
+  Widget retryButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         fixedSize: Size(Phone.width(context) / 4, 40),
         primary: Color.fromRGBO(244, 180, 0, 1),
       ),
       onPressed: () {
-        c.valueController.incrementLevel();
+        c.valueController.reset();
         c.selectShowNumberPage();
       },
       child: Text(
-        'Next',
+        'Retry',
         textAlign: TextAlign.center,
       ),
     );
   }
+
 }

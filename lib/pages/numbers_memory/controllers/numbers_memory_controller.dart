@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:human_benchmark/pages/numbers_memory/controllers/value_controller.dart';
-import 'package:human_benchmark/pages/numbers_memory/numbers_memory_pages/results_pages/correct_answer_page.dart';
-import 'package:human_benchmark/pages/numbers_memory/numbers_memory_pages/hint_page.dart';
-import 'package:human_benchmark/pages/numbers_memory/numbers_memory_pages/show_number_page.dart';
-import 'package:human_benchmark/pages/numbers_memory/numbers_memory_pages/results_pages/wrong_answer_page.dart';
-import '../numbers_memory_pages/ask_number_page.dart';
+import 'package:human_benchmark/pages/numbers_memory/controllers/number_memory_value_controller.dart';
+import 'package:human_benchmark/pages/numbers_memory/pages/ask_number_page.dart';
+import 'package:human_benchmark/pages/numbers_memory/pages/results_pages/correct_answer_page.dart';
+import 'package:human_benchmark/pages/numbers_memory/pages/hint_page.dart';
+import 'package:human_benchmark/pages/numbers_memory/pages/show_number_page.dart';
+import 'package:human_benchmark/pages/numbers_memory/pages/results_pages/wrong_answer_page.dart';
 
 class NumbersMemoryController extends GetxController {
 
-  ValueController get valueController => Get.find<ValueController>();
+  NumbersMemoryValueController get valueController => Get.find<NumbersMemoryValueController>();
 
   var page = 0.obs;
 

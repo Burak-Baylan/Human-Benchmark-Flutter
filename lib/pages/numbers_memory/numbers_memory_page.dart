@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:get/get.dart';
-import 'package:human_benchmark/pages/numbers_memory/controllers/value_controller.dart';
+import 'package:human_benchmark/pages/numbers_memory/controllers/number_memory_value_controller.dart';
 
 import 'controllers/numbers_memory_controller.dart';
 
@@ -15,13 +15,13 @@ class NumbersMemory extends StatefulWidget {
 
 class _NumbersMemoryState extends State<NumbersMemory> {
   late NumbersMemoryController controller;
-  late ValueController valueController;
+  late NumbersMemoryValueController valueController;
 
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIOverlays([]);
     controller = Get.put(NumbersMemoryController());
-    valueController = Get.put(ValueController());
+    valueController = Get.put(NumbersMemoryValueController());
     super.initState();
   }
 

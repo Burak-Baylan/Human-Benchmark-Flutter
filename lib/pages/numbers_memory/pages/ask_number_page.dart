@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
-import 'package:human_benchmark/pages/numbers_memory/controllers/value_controller.dart';
+import 'package:human_benchmark/pages/numbers_memory/controllers/number_memory_value_controller.dart';
 
 class AskNumber extends StatefulWidget {
   AskNumber({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class _AskNumberState extends State<AskNumber> {
 
   late BuildContext context;
   late NumbersMemoryController controller;
-  late ValueController valueController;
+  late NumbersMemoryValueController valueController;
 
   bool isKeyboardOpen = false;
   @override

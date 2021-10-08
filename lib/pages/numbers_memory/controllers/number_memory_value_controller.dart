@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:get/get.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
 
-class ValueController extends NumbersMemoryController {
+class NumbersMemoryValueController extends NumbersMemoryController {
   var levelCounter = 1;
   String number = "";
 
