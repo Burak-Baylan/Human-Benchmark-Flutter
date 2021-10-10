@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
 
 class WrongDetecetor {
-  late NumbersMemoryController c;
-  late String number;
+
+  WrongDetecetor({required this.answer, required this.userAnswer});
+
+  late String answer;
   late String userAnswer;
   String text = "";
 
@@ -19,9 +21,7 @@ class WrongDetecetor {
   late int userAnswerLength;
 
   initializeValues() {
-    number = c.valueController.number;
-    userAnswer = c.valueController.usersAnswer;
-    numberLength = number.length;
+    numberLength = answer.length;
     userAnswerLength = userAnswer.length;
     numberCharacters.clear();
     userAnswerCharacters.clear();
@@ -29,11 +29,7 @@ class WrongDetecetor {
     extraText = "";
   }
 
-  Row detect({
-    required BuildContext context,
-    required NumbersMemoryController controller,
-  }) {
-    this.c = controller;
+  Row detect() {
     initializeValues();
     seperate();
     return Row(
@@ -43,7 +39,7 @@ class WrongDetecetor {
   }
 
   seperate() {
-    seperateCharacters(charList: numberCharacters, text: number);
+    seperateCharacters(charList: numberCharacters, text: answer);
     seperateCharacters(charList: userAnswerCharacters, text: userAnswer);
     compareLenghts();
   }
@@ -96,7 +92,7 @@ class WrongDetecetor {
     return Text(
       text,
       style: TextStyle(
-        fontWeight: FontWeight.bold,
+        //fontWeight: FontWeight.bold,
         decoration:
             lineThrough ? TextDecoration.lineThrough : TextDecoration.none,
         color: Colors.white,
