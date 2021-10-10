@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
+import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/reaction_time/reaction_time_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/sequence_memory_page.dart';
 import 'numbers_memory/numbers_memory_page.dart';
@@ -110,12 +111,14 @@ class HomePage extends StatelessWidget {
       ),
       onPressed: () => Get.to(route),
       child: Center(
-        child: AutoSizeText(
-          text,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontFamily: 'GemunuLibre', color: Colors.white),
-          maxFontSize: 60,
-          minFontSize: textSize,
+        child: FittedBox(
+          child: AutoSizeText(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontFamily: 'GemunuLibre', color: Colors.white),
+            maxFontSize: 60,
+            minFontSize: textSize,
+          ),
         ),
       ),
     );

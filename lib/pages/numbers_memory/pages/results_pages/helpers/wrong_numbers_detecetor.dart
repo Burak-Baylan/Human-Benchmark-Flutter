@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
-import 'package:flutter/material.dart';
 
 class WrongDetecetor {
   late NumbersMemoryController c;

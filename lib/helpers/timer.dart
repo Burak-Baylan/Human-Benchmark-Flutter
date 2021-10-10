@@ -1,4 +1,7 @@
-class Timer {
+import 'dart:async';
+
+class Timer{
+
   static startTimer({
     required int milliseconds,
     required Function onFinished,

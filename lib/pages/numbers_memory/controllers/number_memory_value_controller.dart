@@ -6,9 +6,7 @@ class NumbersMemoryValueController extends NumbersMemoryController {
   var levelCounter = 1;
   String number = "";
 
-  String _usersAnswer = "";
-  set usersAnswer(String answer) => _usersAnswer = answer;
-  String get usersAnswer => _usersAnswer;
+  String usersAnswer = "";
 
   int get levelSecond => (levelCounter + 1) * 1000;
 
@@ -25,9 +23,9 @@ class NumbersMemoryValueController extends NumbersMemoryController {
   }
 
   checkAnswer(NumbersMemoryController c) {
-    if (_usersAnswer.length >= 1) {
+    if (usersAnswer.length >= 1) {
       var c = Get.find<NumbersMemoryController>();
-      if (_usersAnswer == number) {
+      if (usersAnswer == number) {
         c.selectCorrectAnswerPage();
       } else {
         c.selectWrongAnswerPage();
