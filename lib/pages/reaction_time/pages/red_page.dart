@@ -1,3 +1,4 @@
+import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class RedPage extends StatefulWidget {
 }
 
 late ReactionTimeController c;
+late Timer timer;
 
 class _RedPageState extends State<RedPage> {
   @override
@@ -24,7 +26,10 @@ class _RedPageState extends State<RedPage> {
     _startTimer();
     c = Get.find();
     return GestureDetector(
-      onTap: () => c.selectTooSoonPage(),
+      onTap: () {
+        timer.cancel();
+        c.selectTooSoonPage();
+      },
       child: Scaffold(
         backgroundColor: MyColors.myRed,
         body: Container(
@@ -47,11 +52,9 @@ class _RedPageState extends State<RedPage> {
   }
 
   _startTimer() {
-
     var rnd = RandomNumber.minMax(2500, 6000).randomNumber;
-    print("$rnd seconds");
-    Timer.startTimer(milliseconds: rnd, onFinished: () => c.selectGreenPage());
-
+    timer = MyTimer.startTimer(
+        milliseconds: rnd, onFinished: () => c.selectGreenPage());
   }
 
   Widget _waitForGreenText() {

@@ -1,14 +1,10 @@
 import 'dart:async';
 
-class Timer{
-
-  static startTimer({
+class MyTimer {
+  static Timer startTimer({
     required int milliseconds,
     required Function onFinished,
   }) {
-    Future.delayed(
-      Duration(milliseconds: milliseconds),
-      () => onFinished(),
-    );
+    return Timer(Duration(milliseconds: milliseconds), () => onFinished());
   }
 }

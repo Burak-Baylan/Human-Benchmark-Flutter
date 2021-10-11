@@ -64,7 +64,7 @@ class _ShowNumberState extends State<ShowNumber> {
 
   startLevel() {
     c.valueController.numberGenerator();
-    Timer.startTimer(
+    MyTimer.startTimer(
       milliseconds: c.valueController.levelSecond,
       onFinished: () => c.selectAskNumberPage(),
     );

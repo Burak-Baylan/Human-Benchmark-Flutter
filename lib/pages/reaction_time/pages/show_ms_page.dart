@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
-import 'package:human_benchmark/pages/numbers_memory/pages/results_pages/widgets/less_futured_text.dart';
+import 'package:human_benchmark/widgets/less_futured_text.dart';
 import 'package:human_benchmark/pages/reaction_time/controller/recation_time_controller.dart';
 
 class ShowMsPage extends StatefulWidget {
@@ -104,12 +104,15 @@ class _ShowMsPageState extends State<ShowMsPage> {
     return Column(
       children: [
         SizedBox(height: 15),
-        FittedBox(
-          child: LessText.lessFuturedText(
-            text: "Average Score: $averageScore",
-            fontFamily: 'GemunuLibre',
-            fontSize: 35,
-            color: Colors.white,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 25),
+          child: FittedBox(
+            child: LessText.lessFuturedText(
+              text: "Average Score: $averageScore ms" ,
+              fontFamily: 'GemunuLibre',
+              fontSize: 35,
+              color: Colors.white,
+            ),
           ),
         ),
       ],
