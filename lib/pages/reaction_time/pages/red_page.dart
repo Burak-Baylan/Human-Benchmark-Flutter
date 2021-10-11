@@ -23,21 +23,24 @@ class _RedPageState extends State<RedPage> {
   Widget build(BuildContext context) {
     _startTimer();
     c = Get.find();
-    return Scaffold(
-      backgroundColor: MyColors.myRed,
-      body: Container(
-        width: Phone.width(context),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.watch_later_outlined,
-              color: Colors.white,
-              size: 100,
-            ),
-            SizedBox(height: 30),
-            _waitForGreenText(),
-          ],
+    return GestureDetector(
+      onTap: () => c.selectTooSoonPage(),
+      child: Scaffold(
+        backgroundColor: MyColors.myRed,
+        body: Container(
+          width: Phone.width(context),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.watch_later_outlined,
+                color: Colors.white,
+                size: 100,
+              ),
+              SizedBox(height: 30),
+              _waitForGreenText(),
+            ],
+          ),
         ),
       ),
     );

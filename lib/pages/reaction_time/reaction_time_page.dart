@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/pages/reaction_time/controller/recation_time_controller.dart';
 
+import 'controller/reaction_timer_value_controller.dart';
+
 class ReactionTime extends StatefulWidget {
   ReactionTime({Key? key}) : super(key: key);
 
@@ -12,8 +14,8 @@ class ReactionTime extends StatefulWidget {
 
 class _ReactionTimeState extends State<ReactionTime> {
   
-  late ReactionTimeController controller;
-
+  late ReactionTimeController reactionTimeController;
+  late ReactionTimeValueController reactionTimeValueController;
 
   @override
   void dispose() {
@@ -25,11 +27,12 @@ class _ReactionTimeState extends State<ReactionTime> {
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
-    controller = Get.put(ReactionTimeController());
+    reactionTimeController = Get.put(ReactionTimeController());
+    reactionTimeValueController = Get.put(ReactionTimeValueController());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => controller.pages[controller.page.value]);
+    return Obx(() => reactionTimeController.pages[reactionTimeController.page.value]);
   }
 }

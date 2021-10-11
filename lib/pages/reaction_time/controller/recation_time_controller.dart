@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:human_benchmark/pages/reaction_time/controller/reaction_timer_value_controller.dart';
 import 'package:human_benchmark/pages/reaction_time/pages/green_page.dart';
 import 'package:human_benchmark/pages/reaction_time/pages/info_page.dart';
 import 'package:human_benchmark/pages/reaction_time/pages/red_page.dart';
 import 'package:human_benchmark/pages/reaction_time/pages/show_ms_page.dart';
 import 'package:human_benchmark/pages/reaction_time/pages/too_soon_page.dart';
 
-class ReactionTimeController{
+class ReactionTimeController extends GetxController{
 
-  ReactionTimeController get valueController => Get.find<ReactionTimeController>();
+  ReactionTimeValueController get valueController => Get.find<ReactionTimeValueController>();
 
   var page = 0.obs;
 
@@ -24,7 +25,7 @@ class ReactionTimeController{
 
   void selectGreenPage() => page.value = 1;
 
-  void tooSoonPage() => page.value = 2;
+  void selectTooSoonPage() => page.value = 2;
 
   void selectRedPage() => page.value = 3;
 

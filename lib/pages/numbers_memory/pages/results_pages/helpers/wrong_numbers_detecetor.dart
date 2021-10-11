@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
 
 class WrongDetecetor {
-
   WrongDetecetor({required this.answer, required this.userAnswer});
-
-  late String answer;
-  late String userAnswer;
-  String text = "";
-
-  List<String> numberCharacters = [];
-  List<String> userAnswerCharacters = [];
-
-  String extraText = "";
-
-  List<Text> textSpanList = [];
-  List<Text> extraTextSpanList = [];
 
   late int numberLength;
   late int userAnswerLength;
+  late String answer;
+  late String userAnswer;
+  List<String> numberCharacters = [];
+  List<String> userAnswerCharacters = [];
+  List<Text> textSpanList = [];
+  List<Text> extraTextSpanList = [];
+  String extraText = "";
+  String text = "";
 
   initializeValues() {
     numberLength = answer.length;
@@ -26,7 +20,6 @@ class WrongDetecetor {
     numberCharacters.clear();
     userAnswerCharacters.clear();
     textSpanList.clear();
-    extraText = "";
   }
 
   Row detect() {

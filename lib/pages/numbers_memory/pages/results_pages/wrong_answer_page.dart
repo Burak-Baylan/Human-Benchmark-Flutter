@@ -41,7 +41,7 @@ class WrongAnswer extends StatelessWidget {
               color: Colors.grey.shade400,
             ),
             SizedBox(height: 10),
-            WrongDetecetor().detect(context: context, controller: c),
+            WrongDetecetor(answer: c.valueController.number, userAnswer: c.valueController.usersAnswer).detect(),
             SizedBox(height: 30),
             LessText.lessFuturedText(
               text: 'Level ${c.valueController.levelCounter}',
