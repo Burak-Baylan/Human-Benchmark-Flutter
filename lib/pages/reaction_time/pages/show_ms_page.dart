@@ -27,15 +27,19 @@ class _ShowMsPageState extends State<ShowMsPage> {
       body: Center(
         child: Column(
           children: [
-            Container(
-              height: Phone.heigth(context) / 1.5,
-              alignment: Alignment.bottomCenter,
-              child: detailsWdgt(),
+            Flexible(
+              flex: 3,
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                child: detailsWdgt(),
+              ),
             ),
-            Container(
-              alignment: Alignment.bottomCenter,
-              height: Phone.heigth(context) / 3,
-              child: continueButton(),
+            Flexible(
+              flex: 2,
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                child: continueButton(),
+              ),
             ),
           ],
         ),

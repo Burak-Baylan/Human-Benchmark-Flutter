@@ -25,10 +25,6 @@ class ReactionTimeValueController extends ReactionTimeController {
     }
   }
 
-  _reset(){
-
-  }
-
   int calculateAverageScore() {
     int scoresLength = _levelMilleseconds.length;
     int allScores = 0;
