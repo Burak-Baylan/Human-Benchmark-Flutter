@@ -15,10 +15,13 @@ class ShowMsPage extends StatefulWidget {
 class _ShowMsPageState extends State<ShowMsPage> {
   late ReactionTimeController controller;
   late String ms;
+  bool averageVisibility = false;
+  int averageScore = 0;
 
   @override
   Widget build(BuildContext context) {
     _initialValues();
+    _levelController();
     return Scaffold(
       backgroundColor: MyColors.myBlue,
       body: Center(
@@ -27,7 +30,7 @@ class _ShowMsPageState extends State<ShowMsPage> {
             Container(
               height: Phone.heigth(context) / 1.5,
               alignment: Alignment.bottomCenter,
-              child: showDetailsWdgt(),
+              child: detailsWdgt(),
             ),
             Container(
               alignment: Alignment.bottomCenter,
@@ -50,18 +53,15 @@ class _ShowMsPageState extends State<ShowMsPage> {
           fontFamily: 'GemunuLibre',
           color: Colors.white,
         ),
-        style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all(Color.fromRGBO(251, 189, 5, 1)),
-          fixedSize: MaterialStateProperty.all(
-            Size(Phone.width(context) / 1.2, 50),
-          ),
+        style: ElevatedButton.styleFrom(
+          primary: Color.fromRGBO(251, 189, 5, 1),
+          fixedSize: Size(Phone.width(context) / 1.2, 50),
         ),
       ),
     );
   }
 
-  Widget showDetailsWdgt() {
+  Widget detailsWdgt() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -81,6 +81,10 @@ class _ShowMsPageState extends State<ShowMsPage> {
             color: Colors.white,
           ),
         ),
+        Visibility(
+          visible: averageVisibility,
+          child: _averageScoreWdgt(),
+        ),
         SizedBox(height: 15),
         LessText.lessFuturedText(
           text: "${controller.valueController.levelCount}/5",
@@ -88,19 +92,37 @@ class _ShowMsPageState extends State<ShowMsPage> {
           fontSize: 20,
           color: Colors.white,
         ),
-        SizedBox(height: 15),
-        /* FittedBox(
-          child: LessText.lessFuturedText(
-            text: "Click Anywhere to Continue",
-            fontSize: 20,
-            color: Colors.white,
-          ),
-        ), */
       ],
     );
   }
 
+  Widget _averageScoreWdgt() {
+    return Column(
+      children: [
+        SizedBox(height: 15),
+        FittedBox(
+          child: LessText.lessFuturedText(
+            text: "Average Score: $averageScore",
+            fontFamily: 'GemunuLibre',
+            fontSize: 35,
+            color: Colors.white,
+          ),
+        ),
+      ],
+    );
+  }
+
+  _levelController() {
+    if (controller.valueController.levelCount == 5) {
+      setState(() {
+        averageVisibility = true;
+        averageScore = controller.valueController.calculateAverageScore();
+      });
+    }
+  }
+
   _initialValues() {
+    averageVisibility = false;
     controller = Get.find();
     ms = controller.valueController.millisecond.toString();
   }

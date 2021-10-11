@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class WrongDetecetor {
   WrongDetecetor({required this.answer, required this.userAnswer});
 
-  late int numberLength;
+  late int anserrLength;
   late int userAnswerLength;
   late String answer;
   late String userAnswer;
-  List<String> numberCharacters = [];
+  List<String> answerCharacters = [];
   List<String> userAnswerCharacters = [];
   List<Text> textSpanList = [];
   List<Text> extraTextSpanList = [];
@@ -15,9 +15,9 @@ class WrongDetecetor {
   String text = "";
 
   initializeValues() {
-    numberLength = answer.length;
+    anserrLength = answer.length;
     userAnswerLength = userAnswer.length;
-    numberCharacters.clear();
+    answerCharacters.clear();
     userAnswerCharacters.clear();
     textSpanList.clear();
   }
@@ -32,7 +32,7 @@ class WrongDetecetor {
   }
 
   seperate() {
-    seperateCharacters(charList: numberCharacters, text: answer);
+    seperateCharacters(charList: answerCharacters, text: answer);
     seperateCharacters(charList: userAnswerCharacters, text: userAnswer);
     compareLenghts();
   }
@@ -50,11 +50,11 @@ class WrongDetecetor {
 
   compareLenghts() {
     int endPoint;
-    if (numberLength > userAnswerLength) {
+    if (anserrLength > userAnswerLength) {
       endPoint = userAnswerLength - 1;
     } else {
-      endPoint = numberLength - 1;
-      extraText = userAnswer.substring(numberLength, userAnswerLength);
+      endPoint = anserrLength - 1;
+      extraText = userAnswer.substring(anserrLength, userAnswerLength);
       extraTextSpanList.add(
         mText(text: extraText, lineThrough: true),
       );
@@ -64,7 +64,7 @@ class WrongDetecetor {
 
   strikeOut({required endPoint}) {
     for (var i = 0; i <= endPoint; i++) {
-      String answer = numberCharacters[i];
+      String answer = answerCharacters[i];
       String userAnswer = userAnswerCharacters[i];
       if (answer != userAnswer) {
         textSpanList.add(

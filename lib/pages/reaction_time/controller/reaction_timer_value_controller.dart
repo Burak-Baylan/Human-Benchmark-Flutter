@@ -5,21 +5,36 @@ class ReactionTimeValueController extends ReactionTimeController {
   var _millisecond = 0.obs;
   var _levelCounter = 0;
 
+  List<int> _levelMilleseconds = [];
+
   get levelCount => _levelCounter;
 
   int get millisecond => _millisecond.value;
-
   set millisecond(int ms) {
+    _millisecond.value = ms;
+    _levelController(ms);
+  }
 
+  _levelController(int ms) {
     _levelCounter++;
     _levelMilleseconds.add(ms);
-    _millisecond.value = ms;
     if (_levelCounter > 5) {
       _levelMilleseconds.clear();
       _levelCounter = 0;
+      _levelController(ms);
     }
+  }
+
+  _reset(){
 
   }
 
-  var _levelMilleseconds = [];
+  int calculateAverageScore() {
+    int scoresLength = _levelMilleseconds.length;
+    int allScores = 0;
+    for (var i = 0; i < scoresLength; i++) {
+      allScores += _levelMilleseconds[i];
+    }
+    return allScores ~/ 5;
+  }
 }
