@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class LessText {
-  static lessFuturedText({
+  static Text lessFuturedText({
     required String text,
     Color color = Colors.grey,
     double fontSize = 20,
     String? fontFamily = 'GemunuLibre',
     FontWeight fontWeight = FontWeight.bold,
+    TextAlign textAlign = TextAlign.center,
   }) {
     return Text(
       text,
@@ -16,7 +17,7 @@ class LessText {
         color: color,
         fontSize: fontSize,
       ),
-      textAlign: TextAlign.center,
+      textAlign: textAlign,
     );
   }
 }

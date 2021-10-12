@@ -59,7 +59,7 @@ class _ShowMsPageState extends State<ShowMsPage> {
           color: Colors.white,
         ),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromRGBO(251, 189, 5, 1),
+          primary: MyColors.myYellow,
           fixedSize: Size(Phone.width(context) / 1.2, 50),
         ),
       ),

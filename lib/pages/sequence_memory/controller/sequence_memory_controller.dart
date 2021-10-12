@@ -9,13 +9,13 @@ class SequenceMemoryController extends GetxController{
   var page = 0.obs;
   
   List<Widget> pages = [
+    InfoPage(),
     GamePage(),
     WrongAnswer(),
-    InfoPage(),
   ];
 
-  selectGamePage() => page.value = 0;
-  selectWrongAnswerPage() => page.value = 1;
-  selectInfoPage() => page.value = 2;
+  selectInfoPage() => page.value = 0;
+  selectGamePage() => page.value = 1;
+  selectWrongAnswerPage() => page.value = 2;
 
 }
