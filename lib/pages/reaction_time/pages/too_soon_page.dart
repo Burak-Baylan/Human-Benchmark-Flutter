@@ -46,17 +46,21 @@ class TooSoonPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        LessText.lessFuturedText(
-          text: 'Too Soon',
-          color: Colors.white,
-          fontSize: 40,
+        FittedBox(
+          child: Icon(
+            Icons.error_outline,
+            size: 110,
+            color: Colors.white,
+          ),
         ),
         SizedBox(height: 20),
-        LessText.lessFuturedText(
-          text: '!',
-          fontFamily: 'GemunuLibre',
-          color: Colors.white,
-          fontSize: 125,
+        FittedBox(
+          child: LessText.lessFuturedText(
+            text: 'Too Soon!',
+            color: Colors.white,
+            fontWeight: FontWeight.normal,
+            fontSize: 70,
+          ),
         ),
         SizedBox(height: 20),
         FittedBox(
@@ -64,7 +68,8 @@ class TooSoonPage extends StatelessWidget {
             text: 'Click to try again',
             fontFamily: 'GemunuLibre',
             color: Colors.white,
-            fontSize: 45,
+            fontWeight: FontWeight.normal,
+            fontSize: 25,
           ),
         ).marginOnly(bottom: 50),
       ],
