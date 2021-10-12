@@ -17,6 +17,7 @@ class _ShowMsPageState extends State<ShowMsPage> {
   late String ms;
   bool averageVisibility = false;
   int averageScore = 0;
+  String buttonText = 'Continue';
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class _ShowMsPageState extends State<ShowMsPage> {
       child: ElevatedButton(
         onPressed: () => controller.selectRedPage(),
         child: LessText.lessFuturedText(
-          text: "Continue",
+          text: buttonText,
           fontFamily: 'GemunuLibre',
           color: Colors.white,
         ),
@@ -124,6 +125,7 @@ class _ShowMsPageState extends State<ShowMsPage> {
       setState(() {
         averageVisibility = true;
         averageScore = controller.valueController.calculateAverageScore();
+        buttonText = 'Play Again';
       });
     }
   }
@@ -132,5 +134,6 @@ class _ShowMsPageState extends State<ShowMsPage> {
     averageVisibility = false;
     controller = Get.find();
     ms = controller.valueController.millisecond.toString();
+    buttonText = 'Continue';
   }
 }

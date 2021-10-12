@@ -19,10 +19,14 @@ class ReactionTimeValueController extends ReactionTimeController {
     _levelCounter++;
     _levelMilleseconds.add(ms);
     if (_levelCounter > 5) {
-      _levelMilleseconds.clear();
-      _levelCounter = 0;
+      reset();
       _levelController(ms);
     }
+  }
+
+  reset() {
+    _levelMilleseconds.clear();
+    _levelCounter = 0;
   }
 
   int calculateAverageScore() {

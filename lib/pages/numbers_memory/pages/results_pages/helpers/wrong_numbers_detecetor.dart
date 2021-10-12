@@ -85,7 +85,6 @@ class WrongDetecetor {
     return Text(
       text,
       style: TextStyle(
-        //fontWeight: FontWeight.bold,
         decoration:
             lineThrough ? TextDecoration.lineThrough : TextDecoration.none,
         color: Colors.white,
