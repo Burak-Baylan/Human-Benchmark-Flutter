@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/reaction_time/controller/recation_time_controller.dart';
 
 import 'controller/reaction_timer_value_controller.dart';
@@ -19,14 +19,14 @@ class _ReactionTimeState extends State<ReactionTime> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    Phone.closeStatusBar();
+    reactionTimeValueController.reset();
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIOverlays([]);
     reactionTimeController = Get.put(ReactionTimeController());
     reactionTimeValueController = Get.put(ReactionTimeValueController());
   }

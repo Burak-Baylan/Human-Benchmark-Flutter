@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:get/get.dart';
+import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/number_memory_value_controller.dart';
 
 import 'controllers/numbers_memory_controller.dart';
@@ -19,7 +20,7 @@ class _NumbersMemoryState extends State<NumbersMemory> {
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    Phone.closeStatusBar();
     controller = Get.put(NumbersMemoryController());
     valueController = Get.put(NumbersMemoryValueController());
     super.initState();
@@ -27,7 +28,6 @@ class _NumbersMemoryState extends State<NumbersMemory> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     controller.reset();
     super.dispose();
   }

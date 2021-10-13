@@ -8,7 +8,19 @@ import 'package:human_benchmark/pages/reaction_time/reaction_time_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/sequence_memory_page.dart';
 import 'numbers_memory/numbers_memory_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Phone.openStatusBar();
+  }
+
   late BuildContext context;
 
   @override
