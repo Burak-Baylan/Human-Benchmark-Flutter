@@ -41,18 +41,11 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               margin: EdgeInsets.only(left: 15),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: MyColors.menuButtonColor,
-                  elevation: 0,
-                  side: BorderSide(color: Colors.white, width: 2),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                ),
-                onPressed: () {/* SHARE */},
+              child: CustomElevatedButton(
+                primary: MyColors.menuButtonColor,
+                borderSideWidth: 2,
+                borderRadius: 10,
+                onPressed: () {/*Share*/},
                 child: Icon(Icons.share),
               ),
             ),
