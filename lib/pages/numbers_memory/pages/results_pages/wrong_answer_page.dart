@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
-import 'package:human_benchmark/widgets/less_futured_text.dart';
+import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 
 import 'helpers/wrong_numbers_detecetor.dart';
 

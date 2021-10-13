@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
-import 'package:human_benchmark/widgets/less_futured_text.dart';
+import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 import 'package:human_benchmark/pages/reaction_time/controller/recation_time_controller.dart';
 
 class ShowMsPage extends StatefulWidget {

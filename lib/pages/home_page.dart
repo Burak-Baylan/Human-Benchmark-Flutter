@@ -6,10 +6,10 @@ import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/reaction_time/reaction_time_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/sequence_memory_page.dart';
+import 'package:human_benchmark/widgets/button/elevated_button.dart';
 import 'numbers_memory/numbers_memory_page.dart';
 
 class HomePage extends StatefulWidget {
-
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -110,17 +110,10 @@ class _HomePageState extends State<HomePage> {
     required Widget route,
     double textSize = 20,
   }) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: MyColors.menuButtonColor,
-        side: BorderSide(color: Colors.white, width: 2),
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
-          ),
-        ),
-      ),
+    return CustomElevatedButton(
+      primary: MyColors.menuButtonColor,
+      borderSideWidth: 2,
+      borderRadius: 15,
       onPressed: () => Get.to(route),
       child: Center(
         child: FittedBox(
