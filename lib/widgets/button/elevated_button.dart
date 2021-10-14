@@ -36,7 +36,7 @@ class CustomElevatedButton extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () => onPressed,
+      onPressed: () => onPressed(),
       child: child,
     );
   }

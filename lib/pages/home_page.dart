@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: EdgeInsets.only(left: 15),
               child: CustomElevatedButton(
+                size: Size(50, 20),
                 primary: MyColors.menuButtonColor,
                 borderSideWidth: 2,
                 borderRadius: 10,

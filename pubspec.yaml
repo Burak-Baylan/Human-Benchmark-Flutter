@@ -12,6 +12,7 @@ dependencies:
   auto_size_text: ^3.0.0-nullsafety.0
   percent_indicator: ^3.0.1
   focus_detector: ^2.0.0
+  flip_card: ^0.6.0
   get: ^4.3.8
   flutter:
     sdk: flutter
