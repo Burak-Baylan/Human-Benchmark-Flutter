@@ -1,8 +1,9 @@
-import 'dart:math';
-
+import 'package:flip_card/flip_card.dart';
+import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
-import 'package:human_benchmark/widgets/button/elevated_button.dart';
+import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_controller.dart';
 import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 
 class GamePage extends StatefulWidget {
@@ -16,6 +17,7 @@ class _GamePageState extends State<GamePage>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    _initializeValues();
     return Scaffold(
       backgroundColor: MyColors.myBlue,
       body: Column(
@@ -39,7 +41,7 @@ class _GamePageState extends State<GamePage>
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
                 crossAxisCount: 3,
-                children: List.generate(9, (index) => _gridViewChilds(index)),
+                children: widgetList,
               ),
             ),
           ),
@@ -48,23 +50,49 @@ class _GamePageState extends State<GamePage>
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
+  late SequenceMemoryController controller;
+  late List<Widget> widgetList = [];
+
+  _initializeValues() {
+    controller = Get.find();
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    controller.sequenceMemoryValueController.reset();
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    widgetList = List.generate(9, (index) => _gridViewChilds());
   }
 
-  Widget _gridViewChilds(int index) {
-    return Container(
-      child: CustomElevatedButton(
-        onPressed: () {
-        },
-        borderRadius: 10,
-        child: Text(
-          '$index gfdffgd',
-          style: TextStyle(color: Colors.blue),
+  Widget _gridViewChilds() {
+    var flipController = _createController();
+    return Column(
+      children: [
+        FlipCard(
+          flipOnTouch: false,
+          controller: flipController,
+          fill: Fill.fillBack,
+          direction: FlipDirection.HORIZONTAL,
+          front: GestureDetector(
+            child: Container(
+              color: Colors.white,
+              child: Text("1"),
+            ),
+          ),
+          back: Container(
+            color: Colors.grey,
+            child: Text("2"),
+          ),
         ),
-      ),
+        ElevatedButton(
+          onPressed: () => flipController.toggleCard(),
+          child: Text('Touch'),
+        )
+      ],
     );
   }
-}
 
+  FlipCardController _createController() {
+    FlipCardController flipCardController = FlipCardController();
+    controller.sequenceMemoryValueController
+        .addControllerTheList(flipCardController);
+    return flipCardController;
+  }
+}

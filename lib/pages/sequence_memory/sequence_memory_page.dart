@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_controller.dart';
+import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_value_controller.dart';
 
 class SequenceMemory extends StatefulWidget {
   SequenceMemory({Key? key}) : super(key: key);
@@ -12,17 +13,19 @@ class SequenceMemory extends StatefulWidget {
 
 class _SequenceMemoryState extends State<SequenceMemory> {
 
-  late SequenceMemoryController controller;
+  late SequenceMemoryController sequenceMemoryController;
+  late SequenceMemoryValueController sequenceMemoryValueController;
 
   @override
   void initState() {
     super.initState();
     Phone.closeStatusBar();
-    controller = Get.put(SequenceMemoryController());
+    sequenceMemoryController = Get.put(SequenceMemoryController());
+    sequenceMemoryValueController = Get.put(SequenceMemoryValueController());
   }
   
   @override
   Widget build(BuildContext context) {
-    return Obx(() => controller.pages[controller.page.value]);
+    return Obx(() => sequenceMemoryController.pages[sequenceMemoryController.page.value]);
   }
 }

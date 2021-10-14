@@ -50,7 +50,7 @@ class _RedPageState extends State<RedPage> {
   }
 
   _startTimer() {
-    var rnd = RandomNumber.minMax(2500, 6000).randomNumber;
+    var rnd = RandomNumber.minMax(2500, 6001).randomNumber;
     timer = MyTimer.startTimer(
         milliseconds: rnd, onFinished: () => c.selectGreenPage());
   }
