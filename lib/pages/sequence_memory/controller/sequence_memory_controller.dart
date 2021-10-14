@@ -10,6 +10,7 @@ class SequenceMemoryController extends GetxController{
   SequenceMemoryValueController get sequenceMemoryValueController => Get.find<SequenceMemoryValueController>();
 
   var page = 0.obs;
+  var clickable = false;
   
   List<Widget> pages = [
     InfoPage(),

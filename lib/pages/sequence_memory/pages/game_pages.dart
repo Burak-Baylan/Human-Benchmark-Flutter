@@ -55,38 +55,46 @@ class _GamePageState extends State<GamePage>
 
   _initializeValues() {
     controller = Get.find();
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
     controller.sequenceMemoryValueController.reset();
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    widgetList = List.generate(9, (index) => _gridViewChilds());
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+    widgetList = List.generate(9, (index) => _gridViewChilds(index));
   }
 
-  Widget _gridViewChilds() {
+  Widget _gridViewChilds(int index) {
+    return _buildFlipCard(index);
+  }
+
+  Widget _buildFlipCard(int index) {
     var flipController = _createController();
-    return Column(
-      children: [
-        FlipCard(
-          flipOnTouch: false,
-          controller: flipController,
-          fill: Fill.fillBack,
-          direction: FlipDirection.HORIZONTAL,
-          front: GestureDetector(
-            child: Container(
+    return GestureDetector(
+      onTap: _flipCardClickController(index),
+      child: FlipCard(
+        controller: flipController,
+        fill: Fill.fillBack,
+        direction: FlipDirection.HORIZONTAL,
+        front: GestureDetector(
+          child: Container(
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
               color: Colors.white,
-              child: Text("1"),
             ),
-          ),
-          back: Container(
-            color: Colors.grey,
-            child: Text("2"),
+            child: Text("1"),
           ),
         ),
-        ElevatedButton(
-          onPressed: () => flipController.toggleCard(),
-          child: Text('Touch'),
-        )
-      ],
+        back: Container(
+          color: Colors.grey,
+          child: Text("2"),
+        ),
+      ),
     );
+  }
+
+  _flipCardClickController(int index) {
+    if (controller.clickable) {
+      controller.sequenceMemoryValueController.userStepCheck(index);
+    }
   }
 
   FlipCardController _createController() {
