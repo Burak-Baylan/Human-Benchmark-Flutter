@@ -19,39 +19,41 @@ class _GamePageState extends State<GamePage>
   @override
   Widget build(BuildContext context) {
     _initializeValues();
-    return Obx(() => Scaffold(
-          backgroundColor: MyColors.myBlue,
-          body: AnimatedContainer(
-            duration: Duration(milliseconds: 200),
-            color: controller.backGroundColor.value,
-            child: Column(
-              children: [
-                Flexible(
-                  flex: 1,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: LessText.lessFuturedText(
-                      text: 'Level 4',
-                      color: Colors.white,
-                    ),
+    return Obx(
+      () => Scaffold(
+        backgroundColor: controller.backGroundColor.value,
+        body: AnimatedContainer(
+          duration: Duration(milliseconds: 200),
+          color: controller.backGroundColor.value,
+          child: Column(
+            children: [
+              Flexible(
+                flex: 1,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: LessText.lessFuturedText(
+                    text: 'Level 4',
+                    color: Colors.white,
                   ),
                 ),
-                Flexible(
-                  flex: 10,
-                  child: Container(
-                    padding: EdgeInsets.all(15),
-                    child: GridView.count(
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      crossAxisCount: 3,
-                      children: widgetList,
-                    ),
+              ),
+              Flexible(
+                flex: 10,
+                child: Container(
+                  padding: EdgeInsets.all(15),
+                  child: GridView.count(
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    crossAxisCount: 3,
+                    children: widgetList,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   late SequenceMemoryController controller;
@@ -63,43 +65,24 @@ class _GamePageState extends State<GamePage>
   }
 
   Widget _buildFlipCard(int index) {
-    var flipController = _createController();
-
-    return FlipCard(
-      controller: flipController,
-      fill: Fill.fillBack,
-      direction: FlipDirection.HORIZONTAL,
-      front: GestureDetector(
+    return Obx(
+      () => InkWell(
         onTap: () => _flipCardClickController(index),
-        child: Container(
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 100),
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Colors.white,
+            color: controller.cardColors[index].value,
           ),
-          child: Text("1"),
         ),
-      ),
-      back: Container(
-        color: Colors.grey,
-        child: Text("2"),
       ),
     );
   }
 
   _flipCardClickController(int index) {
     if (controller.clickable) {
-      ColorfulPrint.yellow("CLICKABLE");
       controller.sequenceMemoryValueController.userStepCheck(index);
-    }else{
-      ColorfulPrint.red("NOT CLICKABLE");
     }
-  }
-
-  FlipCardController _createController() {
-    FlipCardController flipCardController = FlipCardController();
-    controller.sequenceMemoryValueController
-        .addControllerTheList(flipCardController);
-    return flipCardController;
   }
 }

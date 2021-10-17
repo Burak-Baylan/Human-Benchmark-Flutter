@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MyColors{
+class MyColors {
   static Color menuButtonColor = Color.fromRGBO(171, 87, 87, 1);
   static Color menuBackgroundColor = Color.fromRGBO(109, 152, 134, 1);
   static Color myBlue = Color.fromRGBO(76, 139, 245, 1);
@@ -9,4 +9,5 @@ class MyColors{
   static Color myYellow = Color.fromRGBO(251, 189, 5, 1);
   static Color myLightBlue = Color.fromRGBO(76, 189, 245, 1);
   static Color numbersMemorySemiDarkBlue = Color.fromRGBO(56, 87, 140, 1);
+  static Color transparentBlackForCard = Color.fromRGBO(0, 0, 0, 0.25);
 }

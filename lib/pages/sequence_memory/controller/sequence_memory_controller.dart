@@ -7,13 +7,24 @@ import 'package:human_benchmark/pages/sequence_memory/pages/info_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/pages/wrong_answer_page.dart';
 
 class SequenceMemoryController extends GetxController {
-
   SequenceMemoryValueController get sequenceMemoryValueController =>
       Get.find<SequenceMemoryValueController>();
 
   var page = 0.obs;
   var clickable = true;
   var backGroundColor = MyColors.myBlue.obs;
+
+  List<Rx<Color>> cardColors = [
+    MyColors.transparentBlackForCard.obs,
+    MyColors.transparentBlackForCard.obs,
+    MyColors.transparentBlackForCard.obs,
+    MyColors.transparentBlackForCard.obs,
+    MyColors.transparentBlackForCard.obs,
+    MyColors.transparentBlackForCard.obs,
+    MyColors.transparentBlackForCard.obs,
+    MyColors.transparentBlackForCard.obs,
+    MyColors.transparentBlackForCard.obs,
+  ];
 
   List<Widget> pages = [
     InfoPage(),
@@ -25,6 +36,11 @@ class SequenceMemoryController extends GetxController {
   selectGamePage() => page.value = 1;
   selectWrongAnswerPage() => page.value = 2;
 
-  selectCorrectAnswerColor() => backGroundColor.value = MyColors.myLightBlue;
-  resetColor() => backGroundColor.value = MyColors.myBlue;
+  selectCorrectAnswerBackground() =>
+      backGroundColor.value = MyColors.myLightBlue;
+  resetBackground() => backGroundColor.value = MyColors.myBlue;
+
+  selectWhiteCard(int index) => cardColors[index].value = Colors.white;
+  selectTransparentCard(int index) =>
+      cardColors[index].value = MyColors.transparentBlackForCard;
 }

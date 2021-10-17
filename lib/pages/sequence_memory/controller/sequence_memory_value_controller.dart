@@ -1,6 +1,6 @@
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:get/get.dart';
-import 'package:human_benchmark/pages/sequence_memory/controller/helpers/card_flipper.dart';
+import 'package:human_benchmark/pages/sequence_memory/controller/helpers/card_selector.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/helpers/sequencer.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_controller.dart';
 
@@ -43,7 +43,7 @@ class SequenceMemoryValueController extends GetxController {
   _play() {
     c.clickable = false;
     Sequencer.sequence();
-    CardFlipper.flip();
+    CardSelector.flip();
   }
 
   userStepCheck(int index) {
@@ -57,16 +57,16 @@ class SequenceMemoryValueController extends GetxController {
   _correctStep() async {
     _userClickCounter++;
     if (_userClickCounter == levelCount) {
-      _correctAnswerSignal();
+      _levelDoneSignal();
       reset();
       incrementLevel();
       _play();
     }
   }
 
-  _correctAnswerSignal() async {
-    await Future.delayed(Duration(milliseconds: 200), () => c.selectCorrectAnswerColor());
-    await Future.delayed(Duration(milliseconds: 200), () => c.resetColor());
+  _levelDoneSignal() async {
+    await Future.delayed(Duration(milliseconds: 200), () => c.selectCorrectAnswerBackground());
+    await Future.delayed(Duration(milliseconds: 200), () => c.resetBackground());
   }
 
   _wrongAnswer() {
