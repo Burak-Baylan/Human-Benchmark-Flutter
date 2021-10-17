@@ -15,21 +15,21 @@ class CardSelector {
   late SequenceMemoryController c;
 
   _select() async {
+    c.clickable = false;
     for (var i = 0; i <= vC.queue.length - 1; i++) {
       var colorToBeChangeIndex = vC.queue[i];
       await _changeCard(colorToBeChangeIndex);
-      print("DONE");
     }
     c.clickable = true;
   }
 
   _changeCard(int index) async {
     await Future.delayed(
-      Consts.cardDisplayTime,
+      Consts.cardDisplayDuration,
       () => c.selectWhiteCard(index),
     );
     await Future.delayed(
-      Consts.cardDisplayTime,
+      Consts.cardDisplayDuration,
       () => c.selectTransparentCard(index),
     );
   }

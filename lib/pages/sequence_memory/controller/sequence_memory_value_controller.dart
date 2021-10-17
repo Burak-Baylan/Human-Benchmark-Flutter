@@ -41,7 +41,6 @@ class SequenceMemoryValueController extends GetxController {
   }
 
   play() {
-    c.clickable = false;
     Sequencer.sequence();
     CardSelector.select();
   }
