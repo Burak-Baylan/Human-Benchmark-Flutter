@@ -41,6 +41,7 @@ class SequenceMemoryValueController extends GetxController {
   }
 
   _play() {
+    c.clickable = false;
     Sequencer.sequence();
     CardFlipper.flip();
   }
