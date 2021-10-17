@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_value_controller.dart';
-import 'package:human_benchmark/pages/sequence_memory/pages/game_pages.dart';
+import 'package:human_benchmark/pages/sequence_memory/pages/game_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/pages/info_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/pages/wrong_answer_page.dart';
 
@@ -13,7 +13,7 @@ class SequenceMemoryController extends GetxController {
 
   var page = 0.obs;
   var clickable = true;
-  var backGroundColor = MyColors.myGreen.obs;
+  var backGroundColor = MyColors.myBlue.obs;
 
   List<Widget> pages = [
     InfoPage(),
@@ -24,4 +24,7 @@ class SequenceMemoryController extends GetxController {
   selectInfoPage() => page.value = 0;
   selectGamePage() => page.value = 1;
   selectWrongAnswerPage() => page.value = 2;
+
+  selectCorrectAnswerColor() => backGroundColor.value = MyColors.myLightBlue;
+  resetColor() => backGroundColor.value = MyColors.myBlue;
 }

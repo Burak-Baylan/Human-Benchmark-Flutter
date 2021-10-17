@@ -20,7 +20,8 @@ class _GamePageState extends State<GamePage>
     _initializeValues();
     return Obx(() => Scaffold(
           backgroundColor: MyColors.myBlue,
-          body: Container(
+          body: AnimatedContainer(
+            duration: Duration(milliseconds: 200),
             color: controller.backGroundColor.value,
             child: Column(
               children: [
@@ -57,9 +58,6 @@ class _GamePageState extends State<GamePage>
 
   _initializeValues() {
     controller = Get.find();
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-    controller.sequenceMemoryValueController.reset();
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
     widgetList = List.generate(9, (index) => _buildFlipCard(index));
   }
 
