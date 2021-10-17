@@ -1,5 +1,4 @@
 import 'package:flip_card/flip_card_controller.dart';
-import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/helpers/card_flipper.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/helpers/sequencer.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_controller.dart';
@@ -25,9 +24,7 @@ class SequenceMemoryValueController extends SequenceMemoryController {
     }
   }
 
-  incrementLevel() {
-    _levelCounter++;
-  }
+  incrementLevel() => _levelCounter++;
 
   reset() {
     //queue.clear();
@@ -65,11 +62,13 @@ class SequenceMemoryValueController extends SequenceMemoryController {
 
   _correctStep() async {
     _userClickCounter++;
+    print("\x1B[31m CORRECT STEP, STEP 1 \x1B[0m");
     if (_userClickCounter == levelCount) {
       reset();
       incrementLevel();
       _play();
-      print("COLORS CHANGED");
+
+      print("\x1B[31m CORRECT STEP, STEP 2 \x1B[0m");
     }
   }
 
