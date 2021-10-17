@@ -23,7 +23,7 @@ class SequenceMemoryValueController extends GetxController {
   addControllerTheList(FlipCardController controller) {
     flipCardControllers.add(controller);
     if (flipCardControllers.length == 9) {
-      _play();
+      play();
     }
   }
 
@@ -40,10 +40,10 @@ class SequenceMemoryValueController extends GetxController {
     reset();
   }
 
-  _play() {
+  play() {
     c.clickable = false;
     Sequencer.sequence();
-    CardSelector.flip();
+    CardSelector.select();
   }
 
   userStepCheck(int index) {
@@ -60,7 +60,7 @@ class SequenceMemoryValueController extends GetxController {
       _levelDoneSignal();
       reset();
       incrementLevel();
-      _play();
+      play();
     }
   }
 

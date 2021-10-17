@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-
 class Consts{
-  static const Duration cardDisplayTime = Duration(milliseconds: 500);
+  static const Duration cardDisplayDuration = Duration(milliseconds: 500);
+  static const Duration cardAnimationDuration = Duration(milliseconds: 100);
 }

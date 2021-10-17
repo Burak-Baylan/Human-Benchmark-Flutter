@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colorful_print.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_controller.dart';
+import 'package:human_benchmark/pages/sequence_memory/values/const_values.dart';
 import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 
 class GamePage extends StatefulWidget {
@@ -32,7 +33,7 @@ class _GamePageState extends State<GamePage>
                 child: Align(
                   alignment: Alignment.center,
                   child: LessText.lessFuturedText(
-                    text: 'Level 4',
+                    text: 'Level: ' + controller.sequenceMemoryValueController.levelCount.toString(),
                     color: Colors.white,
                   ),
                 ),
@@ -62,6 +63,7 @@ class _GamePageState extends State<GamePage>
   _initializeValues() {
     controller = Get.find();
     widgetList = List.generate(9, (index) => _buildFlipCard(index));
+    controller.sequenceMemoryValueController.play();
   }
 
   Widget _buildFlipCard(int index) {
@@ -69,7 +71,7 @@ class _GamePageState extends State<GamePage>
       () => InkWell(
         onTap: () => _flipCardClickController(index),
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 100),
+          duration: Consts.cardAnimationDuration,
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
