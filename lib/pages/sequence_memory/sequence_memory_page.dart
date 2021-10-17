@@ -23,6 +23,12 @@ class _SequenceMemoryState extends State<SequenceMemory> {
     sequenceMemoryController = Get.put(SequenceMemoryController());
     sequenceMemoryValueController = Get.put(SequenceMemoryValueController());
   }
+
+  @override
+  void dispose() {
+    sequenceMemoryValueController.hardReset();
+    super.dispose();
+  }
   
   @override
   Widget build(BuildContext context) {

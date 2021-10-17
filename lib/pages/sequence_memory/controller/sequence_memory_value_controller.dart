@@ -1,4 +1,6 @@
 import 'package:flip_card/flip_card_controller.dart';
+import 'package:human_benchmark/helpers/colors.dart';
+import 'package:human_benchmark/pages/sequence_memory/controller/helpers/card_flipper.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/helpers/sequencer.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_controller.dart';
 
@@ -7,9 +9,14 @@ class SequenceMemoryValueController extends SequenceMemoryController {
   int get levelCount => _levelCounter;
   int _userClickCounter = 0;
 
-  List<FlipCardController> flipCardControllers = [];
-  List<int> queue = [];
-  List<int> userClickRow = [];
+  static List<FlipCardController> flipCardControllers = [];
+  static List<int> queue = [];
+  static List<int> userClickRow = [];
+
+  List<FlipCardController> get getFlipCardControllers =>
+      SequenceMemoryValueController.flipCardControllers;
+  List<int> get getQueue => SequenceMemoryValueController.queue;
+  List<int> get getUserClickRow => SequenceMemoryValueController.userClickRow;
 
   addControllerTheList(FlipCardController controller) {
     flipCardControllers.add(controller);
@@ -20,11 +27,10 @@ class SequenceMemoryValueController extends SequenceMemoryController {
 
   incrementLevel() {
     _levelCounter++;
-    _play();
   }
 
   reset() {
-    queue.clear();
+    //queue.clear();
     userClickRow.clear();
     _userClickCounter = 0;
   }
@@ -38,20 +44,32 @@ class SequenceMemoryValueController extends SequenceMemoryController {
   _play() {
     queue.clear();
     Sequencer.sequence();
+    print("CONTROLLERS LENGTH: " +
+        flipCardControllers.length.toString() +
+        " | " +
+        queue.length.toString());
+    CardFlipper.flip();
   }
 
   userStepCheck(int index) {
-    if (queue[_userClickCounter] == index) {
+    print(
+        "IN | QUEUE LENGTH: ${getQueue.length} | USER CLICK COUNT: $_userClickCounter");
+    if (getQueue[_userClickCounter] == index) {
+      print("CORRECT");
       _correctStep();
     } else {
+      print("WRONG");
       _wrongAnswer();
     }
   }
 
-  _correctStep() {
+  _correctStep() async {
     _userClickCounter++;
     if (_userClickCounter == levelCount) {
+      reset();
       incrementLevel();
+      _play();
+      print("COLORS CHANGED");
     }
   }
 

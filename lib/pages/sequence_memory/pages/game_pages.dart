@@ -18,36 +18,38 @@ class _GamePageState extends State<GamePage>
   @override
   Widget build(BuildContext context) {
     _initializeValues();
-    return Scaffold(
-      backgroundColor: MyColors.myBlue,
-      body: Column(
-        children: [
-          Flexible(
-            flex: 1,
-            child: Align(
-              alignment: Alignment.center,
-              child: LessText.lessFuturedText(
-                text: 'Level 4',
-                color: Colors.white,
-              ),
+    return Obx(() => Scaffold(
+          backgroundColor: MyColors.myBlue,
+          body: Container(
+            color: controller.backGroundColor.value,
+            child: Column(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: LessText.lessFuturedText(
+                      text: 'Level 4',
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 10,
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+                    child: GridView.count(
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                      crossAxisCount: 3,
+                      children: widgetList,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          Flexible(
-            flex: 10,
-            child: Container(
-              padding: EdgeInsets.all(15),
-              color: MyColors.myGreen,
-              child: GridView.count(
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                crossAxisCount: 3,
-                children: widgetList,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+        ));
   }
 
   late SequenceMemoryController controller;
@@ -55,38 +57,33 @@ class _GamePageState extends State<GamePage>
 
   _initializeValues() {
     controller = Get.find();
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
     controller.sequenceMemoryValueController.reset();
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-    widgetList = List.generate(9, (index) => _gridViewChilds(index));
-  }
-
-  Widget _gridViewChilds(int index) {
-    return _buildFlipCard(index);
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+    widgetList = List.generate(9, (index) => _buildFlipCard(index));
   }
 
   Widget _buildFlipCard(int index) {
     var flipController = _createController();
-    return GestureDetector(
-      onTap: _flipCardClickController(index),
-      child: FlipCard(
-        controller: flipController,
-        fill: Fill.fillBack,
-        direction: FlipDirection.HORIZONTAL,
-        front: GestureDetector(
-          child: Container(
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.white,
-            ),
-            child: Text("1"),
+
+    return FlipCard(
+      controller: flipController,
+      fill: Fill.fillBack,
+      direction: FlipDirection.HORIZONTAL,
+      front: GestureDetector(
+        onTap: () => _flipCardClickController(index),
+        child: Container(
+          padding: EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.white,
           ),
+          child: Text("1"),
         ),
-        back: Container(
-          color: Colors.grey,
-          child: Text("2"),
-        ),
+      ),
+      back: Container(
+        color: Colors.grey,
+        child: Text("2"),
       ),
     );
   }

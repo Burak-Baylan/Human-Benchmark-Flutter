@@ -10,7 +10,7 @@ class Sequencer extends SequenceMemoryValueController {
     while (counter <= levelCount) {
       var rndNumber = RandomNumber.minMax(0, 9).randomNumber;
       if (!_isNumberCopy(rndNumber)) {
-        queue.add(rndNumber);
+        getQueue.add(rndNumber);
         counter++;
       }
     }
