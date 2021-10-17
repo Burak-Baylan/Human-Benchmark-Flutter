@@ -1,6 +1,5 @@
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:get/get.dart';
-import 'package:human_benchmark/helpers/colorful_print.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/helpers/card_flipper.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/helpers/sequencer.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_controller.dart';
@@ -10,14 +9,9 @@ class SequenceMemoryValueController extends GetxController {
   int get levelCount => _levelCounter;
   int _userClickCounter = 0;
 
-  static List<FlipCardController> flipCardControllers = [];
-  static List<int> queue = [];
-  static List<int> userClickRow = [];
-
-  List<FlipCardController> get getFlipCardControllers =>
-      SequenceMemoryValueController.flipCardControllers;
-  List<int> get getQueue => SequenceMemoryValueController.queue;
-  List<int> get getUserClickRow => SequenceMemoryValueController.userClickRow;
+  List<FlipCardController> flipCardControllers = [];
+  List<int> queue = [];
+  List<int> userClickRow = [];
 
   addControllerTheList(FlipCardController controller) {
     flipCardControllers.add(controller);
@@ -30,7 +24,7 @@ class SequenceMemoryValueController extends GetxController {
 
   reset() {
     queue.clear();
-     userClickRow.clear();
+    userClickRow.clear();
     _userClickCounter = 0;
   }
 
@@ -43,35 +37,29 @@ class SequenceMemoryValueController extends GetxController {
   _play() {
     queue.clear();
     Sequencer.sequence();
-    print("CONTROLLERS LENGTH: " +
-        flipCardControllers.length.toString() +
-        " | " +
-        queue.length.toString());
     CardFlipper.flip();
   }
 
   userStepCheck(int index) {
-    print(
-        "IN | QUEUE LENGTH: ${getQueue.length} | USER CLICK COUNT: $_userClickCounter");
-    if (getQueue[_userClickCounter] == index) {
-      print("CORRECT");
+    if (queue[_userClickCounter] == index) {
       _correctStep();
     } else {
-      print("WRONG");
       _wrongAnswer();
     }
   }
 
   _correctStep() async {
     _userClickCounter++;
-    ColorfulPrint.yellow("CORRECT STEP, STEP 1 | Click Count: $_userClickCounter --- Level: $levelCount");
     if (_userClickCounter == levelCount) {
-      ColorfulPrint.red("CORRECT STEP, STEP 2 | Click Count: $_userClickCounter --- Level: $levelCount");      
+      chc();
       reset();
       incrementLevel();
       _play();
-      ColorfulPrint.yellow("CORRECT STEP, STEP 2 | Click Count: $_userClickCounter --- Level: $levelCount");
     }
+  }
+
+  chc(){
+
   }
 
   _wrongAnswer() {

@@ -19,7 +19,7 @@ class Sequencer{
     while (counter <= c.levelCount) {
       var rndNumber = RandomNumber.minMax(0, 9).randomNumber;
       if (!_isNumberCopy(rndNumber)) {
-        c.getQueue.add(rndNumber);
+        c.queue.add(rndNumber);
         counter++;
       }
     }
