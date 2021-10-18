@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class WrongDetecetor {
   WrongDetecetor({required this.answer, required this.userAnswer});
 
-  late int anserrLength;
+  late int answerLength;
   late int userAnswerLength;
   late String answer;
   late String userAnswer;
@@ -15,7 +15,7 @@ class WrongDetecetor {
   String text = "";
 
   initializeValues() {
-    anserrLength = answer.length;
+    answerLength = answer.length;
     userAnswerLength = userAnswer.length;
     answerCharacters.clear();
     userAnswerCharacters.clear();
@@ -24,20 +24,20 @@ class WrongDetecetor {
 
   Row detect() {
     initializeValues();
-    seperate();
+    _seperate();
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: textSpanList + extraTextSpanList,
     );
   }
 
-  seperate() {
-    seperateCharacters(charList: answerCharacters, text: answer);
-    seperateCharacters(charList: userAnswerCharacters, text: userAnswer);
-    compareLenghts();
+  _seperate() {
+    _seperateCharacters(charList: answerCharacters, text: answer);
+    _seperateCharacters(charList: userAnswerCharacters, text: userAnswer);
+    _compareLenghts();
   }
 
-  seperateCharacters({
+  _seperateCharacters({
     required List<String> charList,
     required String text,
   }) {
@@ -48,21 +48,21 @@ class WrongDetecetor {
     }
   }
 
-  compareLenghts() {
+  _compareLenghts() {
     int endPoint;
-    if (anserrLength > userAnswerLength) {
+    if (answerLength > userAnswerLength) {
       endPoint = userAnswerLength - 1;
     } else {
-      endPoint = anserrLength - 1;
-      extraText = userAnswer.substring(anserrLength, userAnswerLength);
+      endPoint = answerLength - 1;
+      extraText = userAnswer.substring(answerLength, userAnswerLength);
       extraTextSpanList.add(
         mText(text: extraText, lineThrough: true),
       );
     }
-    strikeOut(endPoint: endPoint);
+    _strikeOut(endPoint: endPoint);
   }
 
-  strikeOut({required endPoint}) {
+  _strikeOut({required endPoint}) {
     for (var i = 0; i <= endPoint; i++) {
       String answer = answerCharacters[i];
       String userAnswer = userAnswerCharacters[i];
