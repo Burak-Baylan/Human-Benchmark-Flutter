@@ -88,11 +88,6 @@ class _HomePageState extends State<HomePage> {
           text: "Sequence Memory",
           route: SequenceMemory(),
         ),
-        /* gamesWdgt(
-          text: "?",
-          route: NumbersMemory(),
-          textSize: 55,
-        ), */
       ],
     );
   }
