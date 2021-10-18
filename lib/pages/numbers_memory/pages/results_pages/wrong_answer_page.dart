@@ -24,59 +24,93 @@ class WrongAnswer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IconButton(
-                onPressed: () => Get.back(), icon: Icon(Icons.arrow_back)),
-            LessText.lessFuturedText(
-              text: 'Number',
-              color: Colors.grey.shade400,
+            Flexible(
+              flex: 1,
+              child: _backButton(),
             ),
-            SizedBox(height: 10),
-            LessText.lessFuturedText(
-              text: c.valueController.number,
-              color: Colors.white,
-              fontFamily: null,
-              fontSize: 14,
+            Flexible(
+              flex: 9,
+              child: Container(
+                padding: EdgeInsets.only(bottom: 100),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _numberText(),
+                    SizedBox(height: 10),
+                    _showNumberText(c.valueController.number),
+                    SizedBox(height: 20),
+                    _yourAnswerText(),
+                    SizedBox(height: 10),
+                    _showYourAnswerText(
+                      c.valueController.number,
+                      c.valueController.usersAnswer,
+                    ),
+                    SizedBox(height: 30),
+                    _showLevelText(c.valueController.levelCounter),
+                    SizedBox(height: 20),
+                    retryButton(),
+                  ],
+                ),
+              ),
             ),
-            SizedBox(height: 20),
-            LessText.lessFuturedText(
-              text: 'Your Answer',
-              color: Colors.grey.shade400,
-            ),
-            SizedBox(height: 10),
-            WrongDetecetor(
-                    answer: c.valueController.number,
-                    userAnswer: c.valueController.usersAnswer)
-                .detect(),
-            SizedBox(height: 30),
-            LessText.lessFuturedText(
-              text: 'Level ${c.valueController.levelCounter}',
-              color: Colors.red.shade400,
-              fontSize: 50,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            retryButton(),
           ],
         ),
       ),
     );
   }
 
-  Widget retryButton() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        fixedSize: Size(Phone.width(context) / 4, 40),
-        primary: Color.fromRGBO(244, 180, 0, 1),
-      ),
-      onPressed: () {
-        c.valueController.reset();
-        c.selectShowNumberPage();
-      },
-      child: Text(
-        'Retry',
-        textAlign: TextAlign.center,
-      ),
-    );
-  }
+  Widget _backButton() => Container(
+        width: Phone.width(context),
+        alignment: Alignment.centerLeft,
+        child: IconButton(
+          onPressed: () => Get.back(),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+        ),
+      );
+
+  Text _numberText() => LessText.lessFuturedText(
+        text: 'Number',
+        color: Colors.grey.shade400,
+      );
+
+  Text _showNumberText(String number) => LessText.lessFuturedText(
+        text: number,
+        color: Colors.white,
+        fontFamily: null,
+        fontSize: 14,
+      );
+
+  Text _yourAnswerText() => LessText.lessFuturedText(
+        text: 'Your Answer',
+        color: Colors.grey.shade400,
+      );
+
+  Row _showYourAnswerText(String answer, String userAnswer) => WrongDetecetor(
+        answer: answer,
+        userAnswer: userAnswer,
+      ).detect();
+
+  Text _showLevelText(int level) => LessText.lessFuturedText(
+        text: 'Level $level',
+        color: Colors.red.shade400,
+        fontSize: 50,
+      );
+
+  Widget retryButton() => ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          fixedSize: Size(Phone.width(context) / 4, 40),
+          primary: Color.fromRGBO(244, 180, 0, 1),
+        ),
+        onPressed: () {
+          c.valueController.reset();
+          c.selectShowNumberPage();
+        },
+        child: Text(
+          'Retry',
+          textAlign: TextAlign.center,
+        ),
+      );
 }

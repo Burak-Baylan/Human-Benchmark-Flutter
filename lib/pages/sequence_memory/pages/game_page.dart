@@ -1,9 +1,6 @@
-import 'package:flip_card/flip_card.dart';
-import 'package:flip_card/flip_card_controller.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:human_benchmark/helpers/colorful_print.dart';
-import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_controller.dart';
 import 'package:human_benchmark/pages/sequence_memory/values/const_values.dart';
 import 'package:human_benchmark/widgets/text/less_futured_text.dart';
