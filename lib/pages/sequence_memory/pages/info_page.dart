@@ -19,31 +19,58 @@ class InfoPage extends StatelessWidget {
       body: Container(
         width: Phone.width(context),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            FittedBox(
-              child: LessText.lessFuturedText(
-                text: 'Sequence Memory\nTest',
-                color: Colors.white,
-                fontSize: 50,
-              ),
-            ).marginSymmetric(horizontal: 20),
-            SizedBox(height: 25),
-            FittedBox(
-              child: LessText.lessFuturedText(
-                text: 'Memorize the pattern.',
-                color: Colors.white,
-                fontSize: 20,
+            Flexible(
+              flex: 1,
+              child: _backButton(),
+            ),
+            Flexible(
+              flex: 9,
+              child: Container(
+                padding: EdgeInsets.only(bottom: 50, left: 10, right: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    FittedBox(
+                      child: _gameNameText(),
+                    ),
+                    SizedBox(height: 25),
+                    FittedBox(child: _infoText()),
+                    SizedBox(height: 25),
+                    _startButton(),
+                  ],
+                ),
               ),
             ),
-            SizedBox(height: 25),
-            _startButton(),
           ],
         ),
       ),
     );
   }
+
+  Text _gameNameText() => LessText.lessFuturedText(
+        text: 'Sequence Memory\nTest',
+        color: Colors.white,
+        fontSize: 50,
+      );
+
+  Text _infoText() => LessText.lessFuturedText(
+        text: 'Memorize the pattern.',
+        color: Colors.white,
+        fontSize: 20,
+      );
+
+  Widget _backButton() => Container(
+        alignment: Alignment.centerLeft,
+        child: IconButton(
+          onPressed: () => Get.back(),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+        ),
+      );
 
   ElevatedButton _startButton() {
     return ElevatedButton(
