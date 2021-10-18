@@ -8,7 +8,7 @@ import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 import 'helpers/wrong_numbers_detecetor.dart';
 
 class WrongAnswer extends StatelessWidget {
-  WrongAnswer({ Key? key }) : super(key: key);
+  WrongAnswer({Key? key}) : super(key: key);
 
   late NumbersMemoryController c;
   late BuildContext context;
@@ -24,12 +24,14 @@ class WrongAnswer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            IconButton(
+                onPressed: () => Get.back(), icon: Icon(Icons.arrow_back)),
             LessText.lessFuturedText(
               text: 'Number',
               color: Colors.grey.shade400,
             ),
             SizedBox(height: 10),
-             LessText.lessFuturedText(
+            LessText.lessFuturedText(
               text: c.valueController.number,
               color: Colors.white,
               fontFamily: null,
@@ -41,7 +43,10 @@ class WrongAnswer extends StatelessWidget {
               color: Colors.grey.shade400,
             ),
             SizedBox(height: 10),
-            WrongDetecetor(answer: c.valueController.number, userAnswer: c.valueController.usersAnswer).detect(),
+            WrongDetecetor(
+                    answer: c.valueController.number,
+                    userAnswer: c.valueController.usersAnswer)
+                .detect(),
             SizedBox(height: 30),
             LessText.lessFuturedText(
               text: 'Level ${c.valueController.levelCounter}',
@@ -74,5 +79,4 @@ class WrongAnswer extends StatelessWidget {
       ),
     );
   }
-
 }

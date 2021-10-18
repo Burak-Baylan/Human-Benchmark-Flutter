@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
               child: CustomElevatedButton(
                 size: Size(50, 20),
                 primary: MyColors.myYellow,
-                borderSideWidth: 2,
+                borderSideWidth: 3,
                 borderRadius: 10,
                 onPressed: () {/*Share*/},
                 child: Icon(Icons.share),
@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
   }) {
     return CustomElevatedButton(
       primary: MyColors.myYellow,
-      borderSideWidth: 2,
+      borderSideWidth: 3,
       borderRadius: 15,
       onPressed: () => Get.to(route),
       child: Center(
