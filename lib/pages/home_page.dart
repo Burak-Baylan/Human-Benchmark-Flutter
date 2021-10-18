@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext buildContext) {
     context = buildContext;
     return Scaffold(
-      backgroundColor: MyColors.menuBackgroundColor,
+      backgroundColor: MyColors.myBlue,
       extendBodyBehindAppBar: false,
       appBar: _appBar(),
       body: SafeArea(
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.only(left: 15),
               child: CustomElevatedButton(
                 size: Size(50, 20),
-                primary: MyColors.menuButtonColor,
+                primary: MyColors.myYellow,
                 borderSideWidth: 2,
                 borderRadius: 10,
                 onPressed: () {/*Share*/},
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
         "Home",
         style: TextStyle(color: Colors.white),
       ),
-      backgroundColor: MyColors.menuBackgroundColor,
+      backgroundColor: MyColors.myBlue,
       elevation: 0,
     );
   }
@@ -72,40 +72,37 @@ class _HomePageState extends State<HomePage> {
     return GridView.count(
       padding: EdgeInsets.all(15),
       crossAxisSpacing: 15,
+      childAspectRatio: (100 / 20),
       mainAxisSpacing: 15,
-      crossAxisCount: 2,
+      crossAxisCount: 1,
       children: [
         gamesWdgt(
-          text: "Reaction\nTime",
+          text: "Reaction Time",
           route: ReactionTime(),
-          textSize: 24,
         ),
         gamesWdgt(
-          text: "Numbers\nMemory",
+          text: "Numbers Memory",
           route: NumbersMemory(),
-          textSize: 24,
         ),
         gamesWdgt(
-          text: "Sequence\nMemory",
+          text: "Sequence Memory",
           route: SequenceMemory(),
-          textSize: 24,
         ),
-        gamesWdgt(
+        /* gamesWdgt(
           text: "?",
           route: NumbersMemory(),
           textSize: 55,
-        ),
+        ), */
       ],
     );
   }
 
   Widget gamesWdgt({
     required String text,
-    required Widget route,
-    double textSize = 20,
+    required Widget route
   }) {
     return CustomElevatedButton(
-      primary: MyColors.menuButtonColor,
+      primary: MyColors.myYellow,
       borderSideWidth: 2,
       borderRadius: 15,
       onPressed: () => Get.to(route),
@@ -114,9 +111,9 @@ class _HomePageState extends State<HomePage> {
           child: AutoSizeText(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontFamily: 'GemunuLibre', color: Colors.white),
+            style: TextStyle(fontFamily: 'GemunuLibre', color: Colors.white, fontWeight: FontWeight.bold),
             maxFontSize: 60,
-            minFontSize: textSize,
+            minFontSize: 24,
           ),
         ),
       ),

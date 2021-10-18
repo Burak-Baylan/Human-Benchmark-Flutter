@@ -13,14 +13,14 @@ class Sequencer {
   static sequence() => Sequencer()._chooseRow();
 
   _chooseRow() {
-    ColorfulPrint.rss("Level ${c.levelCount}");
+    ColorfulPrint.green("Level ${c.levelCount}");
     var rndNumber = RandomNumber.minMax(0, 9).randomNumber;
     if (!_isNumberCopy(rndNumber)) {
       c.queue.add(rndNumber);
     }
   }
 
-  int? previousNumber;
+  static int? previousNumber;
 
   bool _isNumberCopy(int number) {
     if (previousNumber != null) {

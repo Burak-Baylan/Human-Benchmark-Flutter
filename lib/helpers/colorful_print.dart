@@ -8,7 +8,7 @@ class ColorfulPrint{
   static red(String text) =>
     print('\x1B[31m$text\x1B[0m');
   
-  static rss(String text) =>
+  static green(String text) =>
     print('\x1B[32m$text\x1B[0m');
   
 
