@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Divider(indent: 15, endIndent: 15),
             Expanded(
               child: Container(
                 child: _gamesLyt(),
