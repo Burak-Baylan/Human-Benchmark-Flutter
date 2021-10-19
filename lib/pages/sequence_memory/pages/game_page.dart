@@ -29,10 +29,7 @@ class _GamePageState extends State<GamePage>
                 flex: 1,
                 child: Align(
                   alignment: Alignment.center,
-                  child: LessText.lessFuturedText(
-                    text: 'Level: ' + controller.sequenceMemoryValueController.levelCount.toString(),
-                    color: Colors.white,
-                  ),
+                  child: _levelText(),
                 ),
               ),
               Flexible(
@@ -51,6 +48,14 @@ class _GamePageState extends State<GamePage>
           ),
         ),
       ),
+    );
+  }
+
+   _levelText() {
+    return LessText.lessFuturedText(
+      text: 'Level: ' +
+          controller.sequenceMemoryValueController.levelCount.toString(),
+      color: Colors.white,
     );
   }
 
