@@ -1,4 +1,3 @@
-import 'package:flip_card/flip_card_controller.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/helpers/card_selector.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/helpers/sequencer.dart';
