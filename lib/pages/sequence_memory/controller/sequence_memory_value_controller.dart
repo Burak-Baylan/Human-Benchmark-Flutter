@@ -14,18 +14,10 @@ class SequenceMemoryValueController extends GetxController {
   int get levelCount => _levelCounter;
   int _userClickCounter = 0;
 
-  List<FlipCardController> flipCardControllers = [];
   List<int> queue = [];
   List<int> userClickRow = [];
 
   late SequenceMemoryController c;
-
-  addControllerTheList(FlipCardController controller) {
-    flipCardControllers.add(controller);
-    if (flipCardControllers.length == 9) {
-      play();
-    }
-  }
 
   incrementLevel() => _levelCounter++;
 
@@ -35,8 +27,8 @@ class SequenceMemoryValueController extends GetxController {
   }
 
   hardReset() {
-    flipCardControllers.clear();
-    _levelCounter = 0;
+    queue.clear();
+    _levelCounter = 1;
     reset();
   }
 

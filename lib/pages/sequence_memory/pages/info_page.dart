@@ -73,6 +73,7 @@ class InfoPage extends StatelessWidget {
       );
 
   ElevatedButton _startButton() {
+    controller.sequenceMemoryValueController.hardReset();
     return ElevatedButton(
       style: ElevatedButton.styleFrom(primary: MyColors.myYellow),
       onPressed: () => controller.selectGamePage(),

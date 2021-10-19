@@ -41,20 +41,22 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               margin: EdgeInsets.only(left: 15),
-              child: CustomElevatedButton(
-                size: Size(50, 20),
-                primary: MyColors.myYellow,
-                borderSideWidth: 3,
-                borderRadius: 10,
-                onPressed: () {/*Share*/},
-                child: Icon(Icons.share),
-              ),
+              child: _shareButton(),
             ),
           ],
         ),
       ),
     );
   }
+
+  Widget _shareButton() => CustomElevatedButton(
+        size: Size(50, 20),
+        primary: MyColors.mySemiDarkYellow,
+        borderSideWidth: 3,
+        borderRadius: 10,
+        onPressed: () {/*Share*/},
+        child: Icon(Icons.share),
+      );
 
   AppBar _appBar() {
     return AppBar(
@@ -76,15 +78,15 @@ class _HomePageState extends State<HomePage> {
       mainAxisSpacing: 15,
       crossAxisCount: 1,
       children: [
-        gamesWdgt(
+        _gamesWdgt(
           text: "Reaction Time",
           route: ReactionTime(),
         ),
-        gamesWdgt(
+        _gamesWdgt(
           text: "Numbers Memory",
           route: NumbersMemory(),
         ),
-        gamesWdgt(
+        _gamesWdgt(
           text: "Sequence Memory",
           route: SequenceMemory(),
         ),
@@ -92,12 +94,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget gamesWdgt({
-    required String text,
-    required Widget route
-  }) {
+  Widget _gamesWdgt({required String text, required Widget route}) {
     return CustomElevatedButton(
-      primary: MyColors.myYellow,
+      primary: MyColors.mySemiDarkYellow,
       borderSideWidth: 3,
       borderRadius: 15,
       onPressed: () => Get.to(route),
@@ -106,7 +105,10 @@ class _HomePageState extends State<HomePage> {
           child: AutoSizeText(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontFamily: 'GemunuLibre', color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontFamily: 'GemunuLibre',
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
             maxFontSize: 60,
             minFontSize: 24,
           ),
