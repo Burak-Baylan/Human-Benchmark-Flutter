@@ -1,13 +1,14 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
+import 'package:human_benchmark/pages/home/widgets/app_bar.dart';
+import 'package:human_benchmark/pages/home/widgets/banner_ad_widget.dart';
+import 'package:human_benchmark/pages/home/widgets/game_widget.dart';
 import 'package:human_benchmark/pages/reaction_time/reaction_time_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/sequence_memory_page.dart';
 import 'package:human_benchmark/widgets/button/elevated_button.dart';
-import 'numbers_memory/numbers_memory_page.dart';
+import '../numbers_memory/numbers_memory_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: MyColors.myBlue,
       extendBodyBehindAppBar: false,
-      appBar: _appBar(),
+      appBar: HomeAppBar.create(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.only(left: 15),
               child: _shareButton(),
             ),
+            HomeBannerWidget().create(context),
           ],
         ),
       ),
@@ -59,18 +61,6 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.share),
       );
 
-  AppBar _appBar() {
-    return AppBar(
-      centerTitle: true,
-      title: Text(
-        "Home",
-        style: TextStyle(color: Colors.white),
-      ),
-      backgroundColor: MyColors.myBlue,
-      elevation: 0,
-    );
-  }
-
   Widget _gamesLyt() {
     return GridView.count(
       padding: EdgeInsets.all(15),
@@ -79,15 +69,15 @@ class _HomePageState extends State<HomePage> {
       mainAxisSpacing: 15,
       crossAxisCount: 1,
       children: [
-        _gamesWdgt(
+        GamesWidget.create(
           text: "Reaction Time",
           route: ReactionTime(),
         ),
-        _gamesWdgt(
+        GamesWidget.create(
           text: "Numbers Memory",
           route: NumbersMemory(),
         ),
-        _gamesWdgt(
+        GamesWidget.create(
           text: "Sequence Memory",
           route: SequenceMemory(),
         ),
@@ -95,26 +85,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _gamesWdgt({required String text, required Widget route}) {
-    return CustomElevatedButton(
-      primary: MyColors.mySemiDarkYellow,
-      borderSideWidth: 3,
-      borderRadius: 15,
-      onPressed: () => Get.to(route),
-      child: Center(
-        child: FittedBox(
-          child: AutoSizeText(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'GemunuLibre',
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
-            maxFontSize: 60,
-            minFontSize: 24,
-          ),
-        ),
-      ),
-    );
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
