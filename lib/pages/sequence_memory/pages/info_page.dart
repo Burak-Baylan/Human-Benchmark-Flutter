@@ -5,9 +5,14 @@ import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_controller.dart';
 import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 
-class InfoPage extends StatelessWidget {
+class InfoPage extends StatefulWidget {
   InfoPage({Key? key}) : super(key: key);
 
+  @override
+  State<InfoPage> createState() => _InfoPageState();
+}
+
+class _InfoPageState extends State<InfoPage> {
   late SequenceMemoryController controller;
 
   @override

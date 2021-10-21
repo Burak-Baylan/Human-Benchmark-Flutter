@@ -4,9 +4,14 @@ import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
 
-class HintPage extends StatelessWidget {
+class HintPage extends StatefulWidget {
   HintPage({Key? key}) : super(key: key);
 
+  @override
+  State<HintPage> createState() => _HintPageState();
+}
+
+class _HintPageState extends State<HintPage> {
   late BuildContext context;
 
   @override

@@ -7,10 +7,16 @@ import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 
 import 'helpers/wrong_numbers_detecetor.dart';
 
-class WrongAnswer extends StatelessWidget {
+class WrongAnswer extends StatefulWidget {
   WrongAnswer({Key? key}) : super(key: key);
 
+  @override
+  State<WrongAnswer> createState() => _WrongAnswerState();
+}
+
+class _WrongAnswerState extends State<WrongAnswer> {
   late NumbersMemoryController c;
+
   late BuildContext context;
 
   @override

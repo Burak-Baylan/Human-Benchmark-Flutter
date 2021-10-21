@@ -4,10 +4,16 @@ import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/reaction_time/controller/recation_time_controller.dart';
 
-class InfoPage extends StatelessWidget {
+class InfoPage extends StatefulWidget {
   InfoPage({Key? key}) : super(key: key);
 
+  @override
+  State<InfoPage> createState() => _InfoPageState();
+}
+
+class _InfoPageState extends State<InfoPage> {
   late BuildContext context;
+
   late ReactionTimeController controller;
 
   @override

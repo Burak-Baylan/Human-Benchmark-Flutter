@@ -5,9 +5,14 @@ import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/reaction_time/controller/recation_time_controller.dart';
 import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 
-class TooSoonPage extends StatelessWidget {
+class TooSoonPage extends StatefulWidget {
   TooSoonPage({Key? key}) : super(key: key);
 
+  @override
+  State<TooSoonPage> createState() => _TooSoonPageState();
+}
+
+class _TooSoonPageState extends State<TooSoonPage> {
   late ReactionTimeController controller;
 
   @override

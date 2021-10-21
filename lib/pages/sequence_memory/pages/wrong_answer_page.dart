@@ -6,9 +6,14 @@ import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory
 import 'package:human_benchmark/widgets/button/elevated_button.dart';
 import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 
-class WrongAnswer extends StatelessWidget {
+class WrongAnswer extends StatefulWidget {
   WrongAnswer({Key? key}) : super(key: key);
 
+  @override
+  State<WrongAnswer> createState() => _WrongAnswerState();
+}
+
+class _WrongAnswerState extends State<WrongAnswer> {
   late SequenceMemoryController controller;
 
   @override

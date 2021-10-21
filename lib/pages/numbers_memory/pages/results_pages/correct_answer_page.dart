@@ -5,10 +5,16 @@ import 'package:human_benchmark/helpers/phone_properties.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
 import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 
-class CorrectAnswer extends StatelessWidget {
+class CorrectAnswer extends StatefulWidget {
   CorrectAnswer({Key? key}) : super(key: key);
 
+  @override
+  State<CorrectAnswer> createState() => _CorrectAnswerState();
+}
+
+class _CorrectAnswerState extends State<CorrectAnswer> {
   late NumbersMemoryController c;
+
   late BuildContext context;
 
   @override
