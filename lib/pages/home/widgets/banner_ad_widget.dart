@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:human_benchmark/ads/allAds/ads.dart';
+import 'package:human_benchmark/ads/ads.dart';
 import 'package:human_benchmark/ads/controller/ads_controller.dart';
 import 'package:human_benchmark/helpers/colorful_print.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';

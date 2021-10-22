@@ -1,6 +1,6 @@
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:human_benchmark/ads/ads_id.dart';
-import 'package:human_benchmark/ads/allAds/banner/home_banner.dart';
+import 'package:human_benchmark/ads/constants/ads_id.dart';
+import 'package:human_benchmark/ads/ad_banner.dart';
 
 class Ads {
   Ads() {
@@ -17,11 +17,10 @@ class Ads {
   static AdWidget homeBanner({
     required void Function(Ad ad) onAdLoaded,
     required void Function(Ad ad, LoadAdError error) onAdFailedToUpload,
-  }) {
-    var homeBanner = HomeBanner();
-    homeBanner.onAdLoaded = onAdLoaded;
-    homeBanner.onAdFailedToUpload = onAdFailedToUpload;
-    return homeBanner.create(AdsId.homeBannerId);
-  }
+  }) =>
+      AdBanner(onLoaded: onAdLoaded, onAdFailedToLoad: onAdFailedToUpload)
+          .bannerAd(AdsId.homeBannerId);
+
+  /* static sequence */
 
 }
