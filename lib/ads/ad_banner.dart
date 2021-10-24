@@ -17,12 +17,14 @@ class AdBanner {
   }
 
   late AdsController c;
-  String? adId;
+  String? _adId;
   Function(Ad ad)? _onAdLoaded;
   Function(Ad ad, LoadAdError error)? _onAdFailedToLoad;
+  late BannerAd _banner;
 
-  AdWidget bannerAd(String adUnitId) {
-    adId = adUnitId;
+  AdWidget bannerAd(String adUnitId, BannerAd banner) {
+    _adId = adUnitId;
+    _banner = banner;
     var bannerW = _bannerAdW();
     bannerW.load();
     return AdWidget(ad: bannerW);
@@ -30,12 +32,12 @@ class AdBanner {
 
   BannerAd _bannerAdW() {
     BannerAd banner = getBanner();
-    c.homeBanner.value = banner;
+    _banner = banner;
     return banner;
   }
 
   BannerAd getBanner() => BannerAd(
-        adUnitId: adId!,
+        adUnitId: _adId!,
         size: AdSize.banner,
         request: AdRequest(),
         listener: BannerAdListener(
