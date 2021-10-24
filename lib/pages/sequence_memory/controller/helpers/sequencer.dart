@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:human_benchmark/helpers/colorful_print.dart';
 import 'package:human_benchmark/helpers/random_number_generator.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_value_controller.dart';
 
@@ -10,13 +9,14 @@ class Sequencer {
 
   late SequenceMemoryValueController c;
 
-  static sequence() => Sequencer()._chooseRow();
+  static sequence() => Sequencer()._chooseCard();
 
-  _chooseRow() {
-    ColorfulPrint.green("Level ${c.levelCount}");
+  _chooseCard() {
     var rndNumber = RandomNumber.minMax(0, 9).randomNumber;
     if (!_isNumberCopy(rndNumber)) {
       c.queue.add(rndNumber);
+    }else{
+      _chooseCard();
     }
   }
 
