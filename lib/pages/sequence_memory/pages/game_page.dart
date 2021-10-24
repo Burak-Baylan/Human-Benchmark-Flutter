@@ -64,14 +64,14 @@ class _GamePageState extends State<GamePage>
 
   _initializeValues() {
     controller = Get.find();
-    widgetList = List.generate(9, (index) => _buildFlipCard(index));
+    widgetList = List.generate(9, (index) => _buildCard(index));
     controller.sequenceMemoryValueController.play();
   }
 
-  Widget _buildFlipCard(int index) {
+  Widget _buildCard(int index) {
     return Obx(
       () => InkWell(
-        onTap: () => _flipCardClickController(index),
+        onTap: () => _cardClickController(index),
         child: AnimatedContainer(
           duration: Consts.cardAnimationDuration,
           padding: EdgeInsets.all(15),
@@ -84,7 +84,7 @@ class _GamePageState extends State<GamePage>
     );
   }
 
-  _flipCardClickController(int index) {
+  _cardClickController(int index) {
     if (controller.clickable) {
       controller.sequenceMemoryValueController.userStepCheck(index);
     }

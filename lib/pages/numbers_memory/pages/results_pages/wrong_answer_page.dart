@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:human_benchmark/helpers/colors.dart';
 import 'package:human_benchmark/helpers/phone_properties.dart';
+import 'package:human_benchmark/pages/numbers_memory/controllers/number_memory_value_controller.dart';
 import 'package:human_benchmark/pages/numbers_memory/controllers/numbers_memory_controller.dart';
 import 'package:human_benchmark/widgets/text/less_futured_text.dart';
 
@@ -16,13 +17,20 @@ class WrongAnswer extends StatefulWidget {
 
 class _WrongAnswerState extends State<WrongAnswer> {
   late NumbersMemoryController c;
+  late NumbersMemoryValueController vC;
 
   late BuildContext context;
+
+  _initState() {
+    c = Get.find();
+    vC = c.valueController;
+    c.showAd();
+  }
 
   @override
   Widget build(BuildContext buildContext) {
     context = buildContext;
-    c = Get.find();
+    _initState();
     return Scaffold(
       backgroundColor: MyColors.myBlue,
       body: Center(
@@ -43,16 +51,13 @@ class _WrongAnswerState extends State<WrongAnswer> {
                   children: [
                     _numberText(),
                     SizedBox(height: 10),
-                    _showNumberText(c.valueController.number),
+                    _showNumberText(vC.number),
                     SizedBox(height: 20),
                     _yourAnswerText(),
                     SizedBox(height: 10),
-                    _showYourAnswerText(
-                      c.valueController.number,
-                      c.valueController.usersAnswer,
-                    ),
+                    _showYourAnswerText(vC.number, vC.usersAnswer),
                     SizedBox(height: 30),
-                    _showLevelText(c.valueController.levelCounter),
+                    _showLevelText(vC.levelCounter),
                     SizedBox(height: 20),
                     retryButton(),
                   ],
