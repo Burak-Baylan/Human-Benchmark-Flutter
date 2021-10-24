@@ -1,6 +1,11 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:human_benchmark/ads/ads.dart';
+import 'package:human_benchmark/ads/controller/ads_controller.dart';
+import 'package:human_benchmark/helpers/colorful_print.dart';
 import 'package:human_benchmark/helpers/colors.dart';
+import 'package:human_benchmark/helpers/timer.dart';
 import 'package:human_benchmark/pages/sequence_memory/controller/sequence_memory_value_controller.dart';
 import 'package:human_benchmark/pages/sequence_memory/pages/game_page.dart';
 import 'package:human_benchmark/pages/sequence_memory/pages/info_page.dart';
@@ -9,6 +14,8 @@ import 'package:human_benchmark/pages/sequence_memory/pages/wrong_answer_page.da
 class SequenceMemoryController extends GetxController {
   SequenceMemoryValueController get sequenceMemoryValueController =>
       Get.find<SequenceMemoryValueController>();
+
+  AdsController get adsController => Get.find<AdsController>();
 
   var page = 0.obs;
   var clickable = true;
@@ -43,4 +50,34 @@ class SequenceMemoryController extends GetxController {
   selectWhiteCard(int index) => cardColors[index].value = Colors.white;
   selectTransparentCard(int index) =>
       cardColors[index].value = MyColors.transparentBlackForCard;
+
+  loadInterstitialAd() {
+    AdsController aC = adsController;
+    Ads.loadSeqMemoryWrongAnswerInterstitial(
+      onAdLoaded: (ad) {
+        ColorfulPrint.green('Loaded Interstitial ad');
+        aC.sequenceMemoryInterstitialIsReady.value = true;
+        aC.sequenceMemoryInterstitialAd.value = ad;
+      },
+      onAdFailedToLoad: (error) {
+        ColorfulPrint.red('Load Interstitial ad error');
+        aC.sequenceMemoryInterstitialIsReady.value = false;
+      },
+    );
+  }
+
+  showAd() {
+    AdsController aC = adsController;
+    if (aC.sequenceMemoryInterstitialIsReady.value) {
+      aC.lockSeqMemoryWrongAnswerInterstitial();
+      aC.showAd(adsController.sequenceMemoryInterstitialAd.value);
+      MyTimer.startTimer(
+        milliseconds: 120000,
+        onFinished: () {
+          loadInterstitialAd();
+          adsController.unlockSeqMemoryWrongAnswerInterstitial();
+        },
+      );
+    }
+  }
 }

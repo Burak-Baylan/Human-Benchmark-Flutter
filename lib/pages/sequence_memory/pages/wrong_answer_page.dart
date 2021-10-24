@@ -46,6 +46,7 @@ class _WrongAnswerState extends State<WrongAnswer> {
 
   _initState() {
     controller = Get.find();
+    controller.showAd();
   }
 
   Widget _retryButton(BuildContext context) {
@@ -64,7 +65,7 @@ class _WrongAnswerState extends State<WrongAnswer> {
     );
   }
 
-  _retry(){
+  _retry() {
     controller.selectInfoPage();
   }
 

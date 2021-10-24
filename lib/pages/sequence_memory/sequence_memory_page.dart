@@ -12,7 +12,6 @@ class SequenceMemory extends StatefulWidget {
 }
 
 class _SequenceMemoryState extends State<SequenceMemory> {
-
   late SequenceMemoryController sequenceMemoryController;
   late SequenceMemoryValueController sequenceMemoryValueController;
 
@@ -22,16 +21,18 @@ class _SequenceMemoryState extends State<SequenceMemory> {
     Phone.closeStatusBar();
     sequenceMemoryController = Get.put(SequenceMemoryController());
     sequenceMemoryValueController = Get.put(SequenceMemoryValueController());
+    _loadAd();
   }
+
+  _loadAd() => sequenceMemoryController.loadInterstitialAd();
 
   @override
   void dispose() {
     sequenceMemoryValueController.hardReset();
     super.dispose();
   }
-  
+
   @override
-  Widget build(BuildContext context) {
-    return Obx(() => sequenceMemoryController.pages[sequenceMemoryController.page.value]);
-  }
+  Widget build(BuildContext context) => Obx(() =>
+      sequenceMemoryController.pages[sequenceMemoryController.page.value]);
 }
