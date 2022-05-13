@@ -11,7 +11,6 @@ class GreenPage extends StatefulWidget {
 }
 
 class _GreenPageState extends State<GreenPage> {
-
   Stopwatch stopWatch = Stopwatch();
 
   late ReactionTimeController c;
