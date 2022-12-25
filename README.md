@@ -26,6 +26,8 @@ Google Play Link: [App Link](https://play.google.com/store/apps/details?id=com.b
 <img src="https://user-images.githubusercontent.com/67222076/166962998-6afa3931-7da4-41aa-9d43-01c177656cc6.png" width="160" height="320">
 
 
+# Privacy Policy
+
 Privacy Policy
 Blue Cannibal built the Human Benchmark app as a Free app. This SERVICE is provided by Blue Cannibal at no cost and is intended for use as is.
 
